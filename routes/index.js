@@ -11,6 +11,10 @@ router.get('/feed', function(req, res, next) {
     res.render('feed');
 });
 
+router.get('/breaking', function(req, res, next) {
+	res.render('breaking');
+});
+
 
 /**
  * Adds comments to our database
