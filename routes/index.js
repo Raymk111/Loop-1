@@ -15,6 +15,9 @@ router.get('/breaking', function(req, res, next) {
 	res.render('breaking');
 });
 
+router.get('/aboutus', function(req, res, next) {
+        res.render('aboutus');
+});
 
 /**
  * Adds comments to our database
