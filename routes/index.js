@@ -19,6 +19,14 @@ router.get('/aboutus', function(req, res, next) {
         res.render('aboutus');
 });
 
+router.get('/local', function(req, res, next) {
+        res.render('local');
+});
+
+router.get('/loops', function(req, res, next) {
+        res.render('loops');
+});
+
 /**
  * Adds comments to our database
  */
