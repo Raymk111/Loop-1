@@ -21,8 +21,23 @@ summary {
   display: block;
 }
 
-select.select-loop-homepage {
-    color: #fff;  
+.thirds {
+    float:left;
+    margin-right: 10%;
+    width: 20%;
+    background-color: blue;
+    color: white;
+    
+}
+
+.first-block {
+   margin-left: 10% 
+    
+}
+
+.last-block {
+    margin-right: 10%;
+    
 }
 
 body {
