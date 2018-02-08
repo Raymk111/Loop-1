@@ -25,6 +25,14 @@ summary {
   display: block;
 }
 
+select.select-loop-homepage {
+    color: #fff;  
+}
+
+body {
+padding-top : 65px;
+}
+
 audio,
 canvas,
 video {
