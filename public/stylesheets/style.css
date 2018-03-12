@@ -5,3 +5,50 @@ body {
 a {
   color: #00B7FF;
 }
+
+.styled-select{  
+    background: url(http://i62.tinypic.com/15xvbd5.png) no-repeat 96% 0;
+    height: 29px;
+    overflow: hidden;
+    width = 120px;   
+}
+
+.styled-select select {
+   background: transparent;
+   border: none;
+   font-size: 14px;
+   height: 29px;
+   padding: 5px; 
+   width: 268px;
+}
+
+.blue {
+    background-color: #FFF;
+}
+
+.blue select {
+    color: #000;
+}
+
+section {
+    padding-top: 20px;
+}
+
+.thirds {
+    float:left;
+    margin-right: 10%;
+    width: 20%;
+    background-color: ;
+    color: white;
+    
+}
+
+.first-block {
+   margin-left: 10% 
+    
+}
+
+.last-block {
+    margin-right: 5%;
+}
+

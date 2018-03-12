@@ -10,28 +10,27 @@
                 </div>
             </div>
             <div class="form-group">
-                <div class="col-xs-3">
-                    <!--Camera-->
-                    <i class="fa fa-camera-retro fa-lg" aria-hidden="true"></i>
+                <div class="col-xs-3 styled-select blue rounded">
+                    <select>
+                        <option value="" selected disabled hidden>Location</option>
+                        <option value="sports">DCU</option>
+                        <option value="politics">NUIG</option>
+                        <option value="college">UCC</option>
+                        <option value="social">UL</option>
+                    </select> 
                 </div>
-                <div class="col-xs-3">
-                    <!--Video-->
-                    <i class="fa fa-video-camera fa-lg" aria-hidden="true"></i>
-                </div>
-                <div class="col-xs-3">
-                    <i class="fa fa-bar-chart fa-lg" aria-hidden="true"></i>
-                </div>
-                <div class="col-xs-3">
-                    <select class="select-loop-homepage">
+                <div class="col-xs-3 styled-select blue rounded">
+                    <select>
+                        <option value="" selected disabled hidden>Loop</option>
                         <option value="sports">Sports</option>
                         <option value="politics">Politics</option>
                         <option value="college">College</option>
                         <option value="social">Social</option>
                     </select> 
                 </div>
-                <!--<div class="col-xs-3">
-                    <button type="text" class="btn btn-primary">Post</button>
-                </div>-->
+                <div class="col-xs-3">
+                    <button float="right" type="text" class="btn btn-primary">Post</button>
+                </div>
             </div>
         </form>
     </div>
@@ -39,12 +38,42 @@
 
 <section>
     <div class="thirds first-block">
-    Loop #1 - Basketball
+        <h3>Favourite Loop</h3>
     </div>
-    <div class="thirds">
-    My Posts
-    </div>
+    <div class="thirds centered">
+        <h3>My Posts</h3>
+    </div>    
     <div class="thirds last-block">
-    NUIG Loop
+        <h3>NUIG Loop</h3>
     </div>
 </section>
+
+<section>
+<div class="row mt centered">
+<div class="col-lg-4">
+    <div class="row col-sm-10 col-sm-offset-1">
+    <button type="button" class="btn btn-primary" id="btn-count">
+        Comments <span class="badge badge-light" id="count">0</span>
+    </button></div>
+    <div class="row col-sm-8 col-sm-offset-2" id="feedPosts"></div>
+</div> 
+    
+<div class="col-lg-4">
+    <div class="row col-sm-10 col-sm-offset-1">
+    <button type="button" class="btn btn-primary" id="btn-count">
+        Comments <span class="badge badge-light" id="count">0</span>
+    </button></div>
+    <div class="row col-sm-8 col-sm-offset-2" id="feedPosts"></div>
+</div> 
+ 
+<div class="col-lg-4">
+    <div class="row col-sm-10 col-sm-offset-1">
+    <button type="button" class="btn btn-primary" id="btn-count">
+        Comments <span class="badge badge-light" id="count">0</span>
+    </button></div>
+    <div class="row col-sm-8 col-sm-offset-2" id="feedPosts"></div>
+</div> 
+</div>
+</section>
+
+
