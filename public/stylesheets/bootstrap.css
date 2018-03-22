@@ -5,6 +5,11 @@
  */
 
 /*! normalize.css v2.1.3 | MIT License | git.io/normalize */
+.front12{
+   padding-left: 300px;
+    padding-bottom: 40px;
+}
+
 .dropdown {
     margin-top: 13px;
     position: relative;
