@@ -23,11 +23,11 @@ a {
 }
 
 .blue {
-    background-color: #FFF;
+    background-color: #4682B4;
 }
 
 .blue select {
-    color: #000;
+    color: #FFF;
 }
 
 section {
@@ -52,3 +52,31 @@ section {
     margin-right: 5%;
 }
 
+.breaking {
+    color: yellow;
+    
+}
+
+.changingNews{
+    color: white;
+}
+
+.newsButtons {
+    color: white;
+    float: right;  
+}
+
+.dropdown-submenu {
+    position: relative;
+}
+
+.dropdown-submenu .dropdown-menu {
+    top: 0;
+    left: 100%;
+    margin-top: -1px;
+}
+
+.push
+{
+    padding-top: 100px;
+}

@@ -12,7 +12,7 @@
 
     <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
     <script src="/javascript/bootstrap.min.js"></script>
-          <script src="/javascript/bootstrap.min.js "></script>      <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+    <script src="/javascript/bootstrap.min.js "></script>     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
 
     <title>Loop</title>
 
@@ -21,9 +21,6 @@
 
     <!-- Custom styles for this template -->
     <link href="/stylesheets/main.css" rel="stylesheet">
-          
-    <!-- Stylesheet for Dark Theme -->
-    <link href="/stylesheets/theme.css" rel="stylesheet">
           
     <!-- Stylesheet :L-->
     <link href="/stylesheets/style.css" rel="stylesheet">
@@ -40,7 +37,7 @@
     </head>
   <body>
       <!-- Fixed navbar -->
-    <div class="navbar navbar-default navbar-fixed-top">
+    <div class="navbar navbar-default navbar-fixed-top" style="width=100%">
       <div class="container">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -73,6 +70,26 @@
     <script src="/javascripts/feed.js"></script>
       <script src="/javascripts/auth.js"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.11.4/sweetalert2.all.min.js"></script>
+      
+      <script>
+          $(document).ready(function(){
+              $('.dropdown-submenu a.test').on("click", function(e){
+                  $(this).next('ul').toggle();
+                  e.stopPropagation();
+                  e.preventDefault();
+              });
+          });
+          
+          jQuery(function(){
+		jQuery('#ticker').tickerme();
+	});
+	
+	
+	
+	// js code for news ticker
+	
+	
+      </script>
 
   </body>
 </html>
