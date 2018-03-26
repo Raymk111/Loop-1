@@ -4,7 +4,7 @@ var Comment = require('../models/comments');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Loop' });
+  res.render('aboutus', { title: 'Loop' });
 });
 
 router.get('/feed', function(req, res, next) {
