@@ -6,3 +6,91 @@ a {
   color: #00B7FF;
 }
 
+.styled-select{  
+    background: url(http://i62.tinypic.com/15xvbd5.png) no-repeat 96% 0;
+    height: 29px;
+    overflow: hidden;
+    width = 120px;   
+}
+
+.styled-select select {
+   background: transparent;
+   border: none;
+   font-size: 14px;
+   height: 29px;
+   padding: 5px; 
+   width: 268px;
+}
+
+.blue {
+    background-color: #4682B4;
+}
+
+.blue select {
+    color: #FFF;
+}
+
+section {
+    padding-top: 20px;
+}
+
+.thirds {
+    float:left;
+    margin-right: 10%;
+    width: 20%;
+    background-color: ;
+    color: white;
+    
+}
+
+.first-block {
+   margin-left: 10% 
+    
+}
+
+.last-block {
+    margin-right: 5%;
+}
+
+.breaking {
+    color: yellow;
+    
+}
+
+.changingNews{
+    color: white;
+}
+
+.newsButtons {
+    color: white;
+    float: right;  
+}
+
+.dropdown-submenu {
+    position: relative;
+}
+
+.dropdown-submenu .dropdown-menu {
+    top: 0;
+    left: 100%;
+    margin-top: -1px;
+}
+
+.push100
+{
+    padding-top: 100px;
+}
+
+.push70
+{
+    padding-top: 70px;
+}
+
+.breadcrumbs{
+  padding-left: 5%;
+
+}
+
+.rowOne{
+  padding-bottom: 30px;
+}

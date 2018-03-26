@@ -1,3 +1,11 @@
+<div class="breadcrumbs">                 
+  <ul class="breadcrumb">
+    <li><a href="/feed">Home</a></li>
+    <li><a href="/loops">Loops</a></li>
+    <li><a href="#">Sports</a></li>
+    <li class="active">Basketball</li>        
+  </ul>
+</div>
 <div class="well col-xs-6 col-xs-offset-3">
     <div class="row col-xs-10 col-xs-offset-1">
         <form class="form-horizontal" role="form" id="postForm">
@@ -9,30 +17,64 @@
                     </div>
                 </div>
             </div>
-            <div class="form-group">
-                <div class="col-xs-3">
-                    <!--Camera-->
-                    <i class="fa fa-camera-retro fa-lg" aria-hidden="true"></i>
+            <div class="container">
+                <div class="dropdown col-xs-1">
+                    <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">Location
+                        <span class="caret"></span></button>
+                    <ul class="dropdown-menu">
+                        <li class="dropdown-header">Colleges</li>
+                        <li><a href="#">DCU</a></li>
+                        <li><a href="#">NUIG</a></li>
+                        <li><a href="#">UCC</a></li>
+                        <li><a href="#">UL</a></li>
+                        <li class="divider"></li>
+                        <li class="dropdown-header">Cities</li>
+                        <li><a href="#">Cork</a></li>
+                        <li><a href="#">Dublin</a></li>
+                        <li><a href="#">Galway</a></li>
+                    </ul>
                 </div>
-                <div class="col-xs-3">
-                    <!--Video-->
-                    <i class="fa fa-video-camera fa-lg" aria-hidden="true"></i>
+                <div class="dropdown col-xs-4">
+                    <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">Loops
+                        <span class="caret"></span></button>
+                    <ul class="dropdown-menu">
+                        <li class="dropdown-submenu">
+                            <a class="test" tabindex="-1" href="#">Sports<span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a tabindex="-1" href="#">Basketball</a></li>
+                                <li><a tabindex="-1" href="#">Football</a></li>
+                            </ul>
+                        </li>
+                        
+                        <li class="dropdown-submenu">
+                            <a class="test" tabindex="-1" href="#">Politics<span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a tabindex="-1" href="#">Donald Trump</a></li>
+                                <li><a tabindex="-1" href="#">Ireland</a></li>
+                            </ul>
+                        </li>
+                        
+                        <li class="dropdown-submenu">
+                            <a class="test" tabindex="-1" href="#">College<span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a tabindex="-1" href="#">Arts</a></li>
+                                <li><a tabindex="-1" href="#">Engineering</a></li>
+                            </ul>
+                        </li>
+                    </ul>
                 </div>
-                <div class="col-xs-3">
-                    <i class="fa fa-bar-chart fa-lg" aria-hidden="true"></i>
-                </div>
-                <div class="col-xs-3">
+                <div class="col-xs-1">
                     <button type="text" class="btn btn-primary">Post</button>
                 </div>
             </div>
         </form>
     </div>
     <div class="row col-sm-10 col-sm-offset-1">
-    <button type="button" class="btn btn-primary" id="btn-count">
+    <!--<button type="button" class="btn btn-primary" id="btn-count">
         Comments <span class="badge badge-light" id="count">0</span>
-    </button>
+    </button>-->
 </div>
 </div>
-<div class="row col-sm-8 col-sm-offset-2" id="feedPosts">
-</div>
+<div class="row col-sm-8 col-sm-offset-2 feedLayout" id="feedPosts" >
+</div>  
 

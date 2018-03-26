@@ -1,3 +1,4 @@
+<section>
 <div class="well col-xs-6 col-xs-offset-3">
     <div class="row col-xs-10 col-xs-offset-1">
         <form class="form-horizontal" role="form" id="postForm">
@@ -9,42 +10,89 @@
                     </div>
                 </div>
             </div>
-            <div class="form-group">
-                <div class="col-xs-3">
-                    <!--Camera-->
-                    <i class="fa fa-camera-retro fa-lg" aria-hidden="true"></i>
+            <div class="container">
+                <div class="dropdown col-xs-1">
+                    <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">Location
+                        <span class="caret"></span></button>
+                    <ul class="dropdown-menu">
+                        <li class="dropdown-header">Colleges</li>
+                        <li><a href="#">DCU</a></li>
+                        <li><a href="#">NUIG</a></li>
+                        <li><a href="#">UCC</a></li>
+                        <li><a href="#">UL</a></li>
+                        <li class="divider"></li>
+                        <li class="dropdown-header">Cities</li>
+                        <li><a href="#">Cork</a></li>
+                        <li><a href="#">Dublin</a></li>
+                        <li><a href="#">Galway</a></li>
+                    </ul>
                 </div>
-                <div class="col-xs-3">
-                    <!--Video-->
-                    <i class="fa fa-video-camera fa-lg" aria-hidden="true"></i>
+                <div class="dropdown col-xs-4">
+                    <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">Loops
+                        <span class="caret"></span></button>
+                    <ul class="dropdown-menu">
+                        <li class="dropdown-submenu">
+                            <a class="test" tabindex="-1" href="#">Sports<span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a tabindex="-1" href="#">Basketball</a></li>
+                                <li><a tabindex="-1" href="#">Football</a></li>
+                            </ul>
+                        </li>
+                        
+                        <li class="dropdown-submenu">
+                            <a class="test" tabindex="-1" href="#">Politics<span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a tabindex="-1" href="#">Donald Trump</a></li>
+                                <li><a tabindex="-1" href="#">Ireland</a></li>
+                            </ul>
+                        </li>
+                        
+                        <li class="dropdown-submenu">
+                            <a class="test" tabindex="-1" href="#">College<span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a tabindex="-1" href="#">Arts</a></li>
+                                <li><a tabindex="-1" href="#">Engineering</a></li>
+                            </ul>
+                        </li>
+                    </ul>
                 </div>
-                <div class="col-xs-3">
-                    <i class="fa fa-bar-chart fa-lg" aria-hidden="true"></i>
-                </div>
-                <div class="col-xs-3">
-                    <select class="select-loop-homepage">
-                        <option value="sports">Sports</option>
-                        <option value="politics">Politics</option>
-                        <option value="college">College</option>
-                        <option value="social">Social</option>
-                    </select> 
-                </div>
-                <!--<div class="col-xs-3">
+                <div class="col-xs-1">
                     <button type="text" class="btn btn-primary">Post</button>
-                </div>-->
+                </div>
             </div>
         </form>
     </div>
 </div>
-
-<section>
-    <div class="thirds first-block">
-    Loop #1 - Basketball
-    </div>
-    <div class="thirds">
-    My Posts
-    </div>
-    <div class="thirds last-block">
-    NUIG Loop
-    </div>
 </section>
+<div class="container">
+  <ul class="nav nav-tabs nav-justified push100">
+    <li class="active"><a data-toggle="tab" href="#home">My Posts</a></li>
+    <li><a data-toggle="tab" href="#menu1">Basketball</a></li>
+    <li><a data-toggle="tab" href="#menu2">US Politics</a></li>
+    <li><a data-toggle="tab" href="#menu3">Weather</a></li>
+  </ul>
+
+  <div class="tab-content" style="padding-top:20px">
+    <div id="feedPosts" class="tab-pane fade in active">
+    </div>
+    <div id="menu1" class="tab-pane fade">
+      <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+    </div>
+    <div id="menu2" class="tab-pane fade">
+      <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>
+    </div>
+    <div id="menu3" class="tab-pane fade">
+      <p>Eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+    </div>
+  </div>
+</div>
+<div class="navbar navbar-default navbar-fixed-bottom" style="background-color:black">
+<div class="container" style="width:90%">
+    <div class="col-sm-2 breaking">BREAKING NEWS</div>
+    <div class="col-sm-8 changingNews">
+        Trae Young has declared for the NBA Draft
+    </div>
+    <div class="col-sm-2" style="background-color:yellow">
+        
+    </div>
+</div>
