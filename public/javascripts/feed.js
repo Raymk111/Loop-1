@@ -1,7 +1,7 @@
 var showPosts = false;
 
 $(document).ready( function()
-                  {
+{
   var totalCharacters = 140;
   $("#postForm").keyup(function (event)
 	{
@@ -63,3 +63,7 @@ $("#feedPosts").click(function (event) {
     }
 });
 
+$("#loopMenu").click(function)
+{
+	alert("Picture was clicked");
+});

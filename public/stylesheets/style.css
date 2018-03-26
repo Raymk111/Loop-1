@@ -76,7 +76,21 @@ section {
     margin-top: -1px;
 }
 
-.push
+.push100
 {
     padding-top: 100px;
+}
+
+.push70
+{
+    padding-top: 70px;
+}
+
+.breadcrumbs{
+  padding-left: 5%;
+
+}
+
+.rowOne{
+  padding-bottom: 30px;
 }
