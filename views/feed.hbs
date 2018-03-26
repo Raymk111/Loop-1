@@ -10,51 +10,32 @@
                     </div>
                 </div>
             </div>
-            <div class="container">
-                <div class="dropdown col-xs-1">
-                    <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">Location
-                        <span class="caret"></span></button>
-                    <ul class="dropdown-menu">
-                        <li class="dropdown-header">Colleges</li>
-                        <li><a href="#">DCU</a></li>
-                        <li><a href="#">NUIG</a></li>
-                        <li><a href="#">UCC</a></li>
-                        <li><a href="#">UL</a></li>
-                        <li class="divider"></li>
-                        <li class="dropdown-header">Cities</li>
-                        <li><a href="#">Cork</a></li>
-                        <li><a href="#">Dublin</a></li>
-                        <li><a href="#">Galway</a></li>
+            <div>
+                <div class="btn-group col-xs-6">
+                    <div class="btn-group">
+                    <select class="selectpicker btn-new" data-style="btn-new">
+                      <optgroup label="Picnic">
+                        <option>Mustard</option>
+                        <option>Ketchup</option>
+                        <option>Relish</option>
+                      </optgroup>
+                      <optgroup label="Camping">
+                        <option>Tent</option>
+                        <option>Flashlight</option>
+                        <option>Toilet Paper</option>
+                      </optgroup>
+                    </select>
+                    </div>
+                    <div class="btn-group">
+                    <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">Location<span class="caret"></span></button>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a href="#">Tablet</a></li>
+                        <li><a href="#">Smartphone</a></li>
                     </ul>
+                    </div>
                 </div>
-                <div class="dropdown col-xs-4">
-                    <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">Loops
-                        <span class="caret"></span></button>
-                    <ul class="dropdown-menu">
-                        <li class="dropdown-submenu">
-                            <a class="test" tabindex="-1" href="#">Sports<span class="caret"></span></a>
-                            <ul class="dropdown-menu">
-                                <li><a tabindex="-1" href="#">Basketball</a></li>
-                                <li><a tabindex="-1" href="#">Football</a></li>
-                            </ul>
-                        </li>
-                        
-                        <li class="dropdown-submenu">
-                            <a class="test" tabindex="-1" href="#">Politics<span class="caret"></span></a>
-                            <ul class="dropdown-menu">
-                                <li><a tabindex="-1" href="#">Donald Trump</a></li>
-                                <li><a tabindex="-1" href="#">Ireland</a></li>
-                            </ul>
-                        </li>
-                        
-                        <li class="dropdown-submenu">
-                            <a class="test" tabindex="-1" href="#">College<span class="caret"></span></a>
-                            <ul class="dropdown-menu">
-                                <li><a tabindex="-1" href="#">Arts</a></li>
-                                <li><a tabindex="-1" href="#">Engineering</a></li>
-                            </ul>
-                        </li>
-                    </ul>
+                <div class="col-xs-5">
+                    <input type="checkbox" checked data-toggle="toggle" data-on="Anonymous" data-off="Not Anonymous" data-onstyle="primary" data-offstyle="info" width="30px">
                 </div>
                 <div class="col-xs-1">
                     <button type="text" class="btn btn-primary">Post</button>
