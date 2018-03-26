@@ -86,5 +86,3 @@ router.post('/login', function(req, res, next){
 router.get('/login_register', function(req, res, next) {
     res.render('login_register');
 });
-
-});
