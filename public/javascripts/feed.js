@@ -62,8 +62,3 @@ $("#feedPosts").click(function (event) {
             });
     }
 });
-
-$("#loopMenu").click(function)
-{
-	alert("Picture was clicked");
-});

@@ -4,6 +4,7 @@ var bcrypt = require('bcrypt-nodejs');
 require('./util');
 
 var usersSchema = new Schema({
+    full_name: {type: String},
     user_name: {type: String},
     password: String,
     fb_id: { type: String, default: null },
