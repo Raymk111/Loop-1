@@ -27,6 +27,10 @@ router.get('/loops', function(req, res, next) {
         res.render('loops');
 });
 
+router.get('/profile', function(req, res, next) {
+        res.render('profile');
+});
+
 /**
  * Adds comments to our database
  */
