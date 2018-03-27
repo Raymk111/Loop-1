@@ -53,7 +53,8 @@ router.post('/addComment', function(req, res, next) {
  */
 router.get('/getComments', function(req, res, next) {
 
-    Comment.find({}, function (err, comments) {
+    var loop = req.params.loop;
+    Comment.find({loop:loop}, function (err, comments) {
         if (err)
             res.send(err);
         res.json(comments);
