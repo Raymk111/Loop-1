@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var Comment = require('../models/comments');
+var jwt = require('jsonwebtoken');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -16,7 +17,7 @@ router.get('/feed', function(req, res, next) {
                 }
         }
         catch(err){
-                res.render('error', {error : "You are not logged in."});
+                res.render('error', {message : "You are not logged in."});
         }
 });
 
@@ -107,3 +108,9 @@ router.delete('/removeComment/:id', function(req, res, next){
     });
 });
 module.exports = router;
+
+function verifyJwt(jwtString)
+{
+        var value = jwt.verify(jwtString, "CSIsTheWorst");
+        return value;
+}
