@@ -5,33 +5,42 @@
             <div class="row">
                 <div class="form-group">
                     <div class="col-xs-12">
-                    <textarea class="form-control required" style="min-width: 100%" rows="3" 	id="inputPost" placeholder="Got something to say?" maxlength="140"></textarea>
+                    <textarea class="form-control required" style="min-width: 100%" rows="3" id="inputPost" placeholder="Got something to say?" maxlength="140"></textarea>
                         <label id="charRemaining" for="inputPost">140</label>
                     </div>
                 </div>
             </div>
             <div>
                 <div class="btn-group col-xs-6">
-                    <div class="btn-group">
-                    <select class="selectpicker btn-new" data-style="btn-new">
-                      <optgroup label="Picnic">
-                        <option>Mustard</option>
-                        <option>Ketchup</option>
-                        <option>Relish</option>
+                    <div class="btn-group col-xs-6" style="width=30%">
+                    <select class="selectpicker btn btn-new" data-style="btn-new">
+                      <optgroup class="dropMenu" label="Sports">
+                        <option selected disabled hidden>Loops</option>
+                        <option>Basketball</option>
+                        <option>GAA</option>
+                        <option>Soccer</option>
                       </optgroup>
-                      <optgroup label="Camping">
-                        <option>Tent</option>
-                        <option>Flashlight</option>
-                        <option>Toilet Paper</option>
+                      <optgroup class="dropMenu" label="College">
+                        <option>Arts</option>
+                        <option>Engineering</option>
+                        <option>Medicine</option>
                       </optgroup>
                     </select>
                     </div>
-                    <div class="btn-group">
-                    <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">Location<span class="caret"></span></button>
-                    <ul class="dropdown-menu" role="menu">
-                        <li><a href="#">Tablet</a></li>
-                        <li><a href="#">Smartphone</a></li>
-                    </ul>
+                    <div class="btn-group col-xs-6">
+                    <select class="selectpicker btn btn-new" data-style="btn-new">
+                      <optgroup class="dropMenu" label="Colleges">
+                        <option selected disabled hidden>Location</option>
+                        <option>DCU</option>
+                        <option>NUIG</option>
+                        <option>UCD</option>
+                      </optgroup>
+                      <optgroup class="dropMenu" label="College">
+                        <option>Cork</option>
+                        <option>Dublin</option>
+                        <option>Galway</option>
+                      </optgroup>
+                    </select>
                     </div>
                 </div>
                 <div class="col-xs-5">
@@ -47,23 +56,24 @@
 </section>
 <div class="container">
   <ul class="nav nav-tabs nav-justified push100">
-    <li class="active"><a data-toggle="tab" href="#home">My Posts</a></li>
+    <li class="active">
+        <a data-toggle="tab" href="#home">My Posts</a></li>
     <li><a data-toggle="tab" href="#menu1">Basketball</a></li>
     <li><a data-toggle="tab" href="#menu2">US Politics</a></li>
     <li><a data-toggle="tab" href="#menu3">Weather</a></li>
   </ul>
 
   <div class="tab-content" style="padding-top:20px">
-    <div id="feedPosts" class="tab-pane fade in active">
+    <div id="feedPosts" class="tab-pane fade in active feedLayout">
+        <button type="button" class="btn btn-primary" id="btn-count">
+        Comments <span class="badge badge-light" id="count">0</span>
+    </button>
     </div>
     <div id="menu1" class="tab-pane fade">
-      <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
     </div>
     <div id="menu2" class="tab-pane fade">
-      <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>
     </div>
     <div id="menu3" class="tab-pane fade">
-      <p>Eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
     </div>
   </div>
 </div>
