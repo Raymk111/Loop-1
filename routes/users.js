@@ -13,6 +13,7 @@ module.exports = router;
 router.post('/register', function(req, res, next){
     var username = req.body.user_name;
     var password = req.body.password;
+    var full_name = req.body.full_name;
     // Check if account already exists
     User.findOne({ 'user_name' :  username }, function(err, user)
     {
@@ -31,6 +32,7 @@ router.post('/register', function(req, res, next){
             // set the user's local credentials
             newUser.user_name = username;
             newUser.password = newUser.generateHash(password);
+	    newUser.full_name = full_name;
             newUser.access_token = createJwt({user_name:username});
             newUser.save(function(err, user) {
                 if (err)
