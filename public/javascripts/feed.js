@@ -40,7 +40,7 @@ $("#feedPosts").click(function (event) {
     {
         $.ajax(
             {
-            url: '/deleteComment/' + event.target.name, type: 'DELETE',
+            url: '/removeComment/' + event.target.name, type: 'DELETE',
                 success: function(result) {
                     getComments(); }
             });
