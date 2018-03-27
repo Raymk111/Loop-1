@@ -47,7 +47,7 @@ function onSignIn(googleUser)
   console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
   $.ajax({
                  type: 'POST',
-                 url: '/users/register',
+                 url: '/users/login',
                  dataType: 'json',
                          data: {
                                  'user_name': profile.getEmail(),
