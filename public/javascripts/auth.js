@@ -75,7 +75,8 @@ function onRegIn(googleUser)
                  url: '/users/register', dataType: 'json',
                  data: {
                          'user_name': profile.getEmail(),
-                         'password': profile.getId() },
+                         'password': profile.getId(),
+			 'full_name': profile.getName() },
                  success: function(token){ $(location).attr('href', '/feed' );
          },
          error: function(errMsg) {
