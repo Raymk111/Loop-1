@@ -13,7 +13,7 @@
             <div>
                 <div class="btn-group col-xs-6">
                     <div class="btn-group">
-                    <select class="selectpicker btn-new" data-style="btn-new" value="Loops">
+                    <select class="selectpicker btn btn-new" data-style="btn-new">
                       <optgroup class="dropMenu" label="Sports">
                         <option selected disabled hidden>Loops</option>
                         <option>Basketball</option>
@@ -28,7 +28,7 @@
                     </select>
                     </div>
                     <div class="btn-group">
-                    <select class="selectpicker btn-new" data-style="btn-new" value="Loops">
+                    <select class="selectpicker btn btn-new" data-style="btn-new">
                       <optgroup class="dropMenu" label="Colleges">
                         <option selected disabled hidden>Location</option>
                         <option>DCU</option>
@@ -56,23 +56,24 @@
 </section>
 <div class="container">
   <ul class="nav nav-tabs nav-justified push100">
-    <li class="active"><a data-toggle="tab" href="#home">My Posts</a></li>
+    <li class="active">
+        <a data-toggle="tab" href="#home">My Posts</a></li>
     <li><a data-toggle="tab" href="#menu1">Basketball</a></li>
     <li><a data-toggle="tab" href="#menu2">US Politics</a></li>
     <li><a data-toggle="tab" href="#menu3">Weather</a></li>
   </ul>
 
   <div class="tab-content" style="padding-top:20px">
-    <div id="feedPosts" class="tab-pane fade in active">
+    <div id="feedPosts" class="tab-pane fade in active feedLayout">
+        <button type="button" class="btn btn-primary" id="btn-count">
+        Comments <span class="badge badge-light" id="count">0</span>
+    </button>
     </div>
     <div id="menu1" class="tab-pane fade">
-      <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
     </div>
     <div id="menu2" class="tab-pane fade">
-      <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>
     </div>
     <div id="menu3" class="tab-pane fade">
-      <p>Eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
     </div>
   </div>
 </div>
