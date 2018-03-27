@@ -1,8 +1,8 @@
 var showPosts = false;
+var totalCharacters = 140;
 
 $(document).ready( function()
 {
-  var totalCharacters = 140;
   $("#postForm").keyup(function (event)
 	{
       	   var inputText = event.target.value;
@@ -31,7 +31,8 @@ function getComments(){
 		$( "#feedPosts" ).html( posts );
 		$("#count").html(data.length);
 		$("#feedPosts").show();
-		setTimeout(getComments,100);
+});
+setTimeout(getComments,100);
 }
 
 $("#feedPosts").click(function (event) {
