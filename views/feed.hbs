@@ -5,15 +5,15 @@
             <div class="row">
                 <div class="form-group">
                     <div class="col-xs-12">
-                    <textarea class="form-control required" style="min-width: 100%" rows="3" id="inputPost" placeholder="Got something to say?" maxlength="140"></textarea>
+                    <textarea class="form-control required" style="min-width: 100%" style="max-width: 120%" rows="3" id="inputPost" placeholder="Got something to say?" maxlength="140"></textarea>
                         <label id="charRemaining" for="inputPost">140</label>
                     </div>
                 </div>
             </div>
             <div>
                 <div class="btn-group col-xs-6">
-                    <div class="btn-group col-xs-6" style="width=30%">
-                    <select class="selectpicker btn btn-new" data-style="btn-new">
+                    <div class="btn-group col-xs-6">
+                    <select id="loopSelect" class="selectpicker btn btn-new" data-style="btn-new">
                       <optgroup class="dropMenu" label="Sports">
                         <option selected disabled hidden>Loops</option>
                         <option>Basketball</option>
@@ -30,7 +30,7 @@
                     <div class="btn-group col-xs-6">
                     <select class="selectpicker btn btn-new" data-style="btn-new">
                       <optgroup class="dropMenu" label="Colleges">
-                        <option selected disabled hidden>Location</option>
+                        <option selected disabled hidden>Local</option>
                         <option>DCU</option>
                         <option>NUIG</option>
                         <option>UCD</option>
@@ -47,7 +47,7 @@
                     <input type="checkbox" checked data-toggle="toggle" data-on="Anonymous" data-off="Not Anonymous" data-onstyle="primary" data-offstyle="info" width="30px">
                 </div>
                 <div class="col-xs-1">
-                    <button type="text" class="btn btn-primary">Post</button>
+                    <submit class="btn btn-primary">Post</submit>
                 </div>
             </div>
         </form>
@@ -64,10 +64,7 @@
   </ul>
 
   <div class="tab-content" style="padding-top:20px">
-    <div id="feedPosts" class="tab-pane fade in active feedLayout">
-        <button type="button" class="btn btn-primary" id="btn-count">
-        Comments <span class="badge badge-light" id="count">0</span>
-    </button>
+    <div id="feedPosts" class="tab-pane well fade in active feedLayout">
     </div>
     <div id="menu1" class="tab-pane fade">
     </div>
@@ -81,7 +78,7 @@
 <div class="container" style="width:90%">
     <div class="col-sm-2 breaking">BREAKING NEWS</div>
     <div class="col-sm-8 changingNews">
-        Trae Young has declared for the NBA Draft
+        Tre Young has declared for the NBA Draft
     </div>
     <div class="col-sm-2" style="background-color:yellow">
         

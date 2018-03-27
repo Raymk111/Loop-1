@@ -12,7 +12,9 @@ $(document).ready( function()
 
 $("#postForm").submit(function (event) { event.preventDefault(); $.post("/addComment", 
 	{
-		comment: event.target.inputPost.value }, function (result) {
+		comment: event.target.inputPost.value,
+		loop: event.target.loopSelect.value
+	}, function (result) {
 		$("#charRemaining").html(totalCharacters); event.target.reset();
 	});
 	getComments();
@@ -28,28 +30,9 @@ function getComments(){
  		}
 		$( "#feedPosts" ).html( posts );
 		$("#count").html(data.length);
-		if(!showPosts)
-		{
 		$("#feedPosts").show();
-		}
-		else
-		{
-		$("#feedPosts").show();
-		}
-		// Recursively call getComments every 4 seconds
-		});
-		setTimeout(getComments,4000);
+		setTimeout(getComments,100);
 }
-
-$("#btn-count").click(function (event) { var options = {};
-if(!showPosts)
-{
-$("#feedPosts").show( "blind", options, 1000);
-showPosts = true; }
-else
-{
-$("#feedPosts").hide( "blind", options, 1000); showPosts = false;
-} });
 
 $("#feedPosts").click(function (event) {
     console.log(event.target.name); if(event.target.name)
@@ -61,9 +44,4 @@ $("#feedPosts").click(function (event) {
                     getComments(); }
             });
     }
-});
-
-$("#loopMenu").click(function)
-{
-	alert("Picture was clicked");
 });
