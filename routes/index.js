@@ -8,7 +8,16 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/feed', function(req, res, next) {
-    res.render('feed');
+        try{
+                var jwtString = req.cookies.Authorization.split(" ");
+                var profile = verifyJwt(jwtString[1]);
+                if(profile){
+                        res.render('feed', {title : 'Loop'});
+                }
+        }
+        catch(err){
+                res.render('error', {error : "You are not logged in."});
+        }
 });
 
 router.get('/breaking', function(req, res, next) {
