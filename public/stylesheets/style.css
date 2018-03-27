@@ -95,11 +95,22 @@ section {
   padding-bottom: 30px;
 }
 
-select.selectpicker {
+.selectpicker {
       display: block;
       margin: 0 auto;
       padding-left: 20px;
 }
 .btn-new {
-      background-color: #2A3F54;
+      background-color: #428BCA;
+      color: white;  
+      width: 100%;
+      text-align: center;
+      margin: auto;
+      height: 34px;
+}
+
+.dropMenu{
+  background-color: white;
+  color: black;
+  padding-bottom: 5px;
 }
