@@ -14,7 +14,8 @@ $("#postForm").submit(function (event) { event.preventDefault(); $.post("/addCom
 	{
 		comment: event.target.inputPost.value,
 		loop: event.target.loopSelect.value,
-		college: event.target.collegeSelect.value
+		college: event.target.collegeSelect.value,
+		token: getCookie("Authorization")
 	},  function (result) {
 		$("#charRemaining").html(totalCharacters); event.target.reset();
 	});
@@ -47,3 +48,19 @@ $("#feedPosts").click(function (event) {
             });
     }
 });
+
+function getCookie(cname) {
+    var name = cname + "=";
+    var decodedCookie = decodeURIComponent(document.cookie);
+    var ca = decodedCookie.split(';');
+    for(var i = 0; i < ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0) == ' ') {
+            c = c.substring(1);
+        }
+        if (c.indexOf(name) == 0) {
+            return c.substring(name.length, c.length);
+        }
+    }
+    return "";
+}
