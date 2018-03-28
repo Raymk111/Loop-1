@@ -11,8 +11,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
-    <script src="/javascript/bootstrap.min.js"></script>
-    <script src="/javascript/bootstrap.min.js "></script>     
+    <script src="/javascripts/bootstrap.min.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
     <script src="https://apis.google.com/js/platform.js" async defer></script>
     <meta name="google-signin-client_id" content="244565428656-qe72o66k3efep91215mh3np369189mno.apps.googleusercontent.com">
@@ -60,6 +59,15 @@
                  <a href="/profile">Profile</a>
                  <ul class= "dropdown-content">
                     <a href="#" onclick="signOut();">Sign out</a>
+		    <a href="#" onclick="signOut();">Sign out</a>
+			<script>
+			  function signOut() {
+			    var auth2 = gapi.auth2.getAuthInstance();
+			    auth2.signOut().then(function () {
+			      console.log('User signed out.');
+			    });
+			  }
+			</script>
                  </ul>
                  </li>
             
@@ -91,14 +99,6 @@
     <script src="/javascripts/feed.js"></script>
       <script src="/javascripts/auth.js"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.11.4/sweetalert2.all.min.js"></script>
-    <script>
-      function signOut() {
-      var auth2 = gapi.auth2.getAuthInstance();
-      auth2.signOut().then(function () {
-      console.log('User signed out.');
-      });
-    }
-    </script>
       
   <script>
     $(document).ready(function(){
