@@ -13,8 +13,9 @@ $(document).ready( function()
 $("#postForm").submit(function (event) { event.preventDefault(); $.post("/addComment", 
 	{
 		comment: event.target.inputPost.value,
-		loop: event.target.loopSelect.value
-	}, function (result) {
+		loop: event.target.loopSelect.value,
+		college: event.target.collegeSelect.value
+	},  function (result) {
 		$("#charRemaining").html(totalCharacters); event.target.reset();
 	});
 	getComments();
