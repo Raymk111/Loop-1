@@ -35,7 +35,7 @@ function getComments(){
 		$("#count").html(data.length);
 		$("#feedPosts").show();
 });
-setTimeout(getComments,100);
+setTimeout(getComments,1000);
 }
 
 $("#feedPosts").click(function (event) {
@@ -45,7 +45,7 @@ $("#feedPosts").click(function (event) {
             {
             url: '/removeComment/' + event.target.name, type: 'DELETE',
                 success: function(result) {
-                    getComments(); }
+                 }
             });
     }
 });
