@@ -65,3 +65,10 @@ function getCookie(cname) {
     }
     return "";
 }
+
+function getProfile(name)
+{
+	return $.get( "/getUser/"+name, function(res) {
+		ret = res.responseJSON;
+});
+}
