@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 var Comment = require('../models/comments');
 var jwt = require('jsonwebtoken');
+var User = require('../models/users');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -77,6 +78,15 @@ router.get('/getComments:loop', function(req, res, next) {
         if (err)
             res.send(err);
         res.json(comments);
+    });
+});
+
+router.get('/getUser/:user_name', function(req, res, next) {
+    var name = req.params.user_name;
+    User.find({user_name:name}, function (err, users) {
+        if (err)
+            res.send(err);
+        res.json(users);
     });
 });
 
