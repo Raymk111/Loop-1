@@ -1,5 +1,6 @@
 var showPosts = false;
 var totalCharacters = 140;
+var profile;
 
 $(document).ready( function()
 {
@@ -68,7 +69,24 @@ function getCookie(cname) {
 
 function getProfile(name)
 {
-	return $.get( "/getUser/"+name, function(res) {
-		ret = res.responseJSON;
+	$.get( "/getUser/"+name, function(res) {
+		if(res[0] != null)
+		{
+			profile = "";
+			profile += res[0].user_name;
+			profile += " ";
+			profile += res[0].full_name;
+		}
+		else
+		{
+			profile = "Not Found";
+		}
 });
 }
+
+$("#search_user").click(function (event) {
+	event.preventDefault();
+	var name = document.getElementById("user_name").value;
+	getProfile(name);
+	$("#out").html(profile);
+});
