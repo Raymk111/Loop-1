@@ -10,6 +10,7 @@ $(document).ready( function()
       	   $("#charRemaining").html(totalCharacters - inputText.length);
   	});
   getComments();
+    getName();
 });
 
 $("#postForm").submit(function (event) { event.preventDefault(); $.post("/addComment", 
@@ -88,5 +89,15 @@ $("#search_user").click(function (event) {
 	event.preventDefault();
 	var name = document.getElementById("user_name").value;
 	getProfile(name);
+ 		
 	$("#out").html(profile);
 });
+
+function getName()
+{
+    var myName = getCookie("Authorization");
+    myName = myName.split(" ");
+    myName[0];
+   
+    $("#pname").html(myName);
+}
