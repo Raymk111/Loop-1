@@ -52,7 +52,7 @@ function onSignIn(googleUser)
                          data: {
                                  'user_name': profile.getEmail(),
                                  'password': profile.getId() },
-                         success: function(token){ $(location).attr('href', '/feed' );
+                         success: function(token){
                  },
                  error: function(errMsg) {
                          swal( 'Oops...',
