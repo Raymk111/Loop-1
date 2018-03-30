@@ -119,3 +119,18 @@ section {
   color: black;
   padding-bottom: 5px;
 }
+
+.size36 {
+  font-size: 20px; 
+}
+
+.yellow {
+  color: yellow;
+  padding-top: 5px;
+}
+
+.breaking{
+  height: 25px;
+  margin: auto;
+  padding-top: 12px;
+}

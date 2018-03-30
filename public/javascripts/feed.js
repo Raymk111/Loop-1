@@ -10,7 +10,8 @@ $(document).ready( function()
       	   $("#charRemaining").html(totalCharacters - inputText.length);
   	});
   getComments();
-    getName();
+  getName();
+  getBreaking();
 });
 
 $("#postForm").submit(function (event) { event.preventDefault(); $.post("/addComment", 
@@ -100,4 +101,15 @@ function getName()
     myName[0];
    
     $("#pname").html(myName);
+}
+
+function getBreaking(){
+	$.get( "/getComments", function( data ) {
+		var main = "";
+		for(var i=2; i<data.length; i++){
+			main = "<div class='col-xs-9'>"
+				+ data[i].comment + "</div>"
+		}
+		$("#breakingNews").html(main);
+	});
 }
