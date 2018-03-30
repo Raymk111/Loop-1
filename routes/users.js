@@ -96,3 +96,7 @@ router.get('/register', function(req, res, next) {
 router.get('/login_register', function(req, res, next) {
     res.render('login_register');
 });
+
+router.get('/loops/sports', function(req, res, next) {
+    res.render('sports');
+});
