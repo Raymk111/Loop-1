@@ -1,4 +1,4 @@
-<form class="search_form" id="search_form">
+<form class="search_form" id="search_user">
 <label for="inputUsername" class="control-label">Username</label>
 <input type="text" class="form-control" id="user_name" placeholder="@Useranme">
 <button class="btn btn-default" id="search_user">Search</button>
@@ -7,12 +7,13 @@
 <table style="width:70%; margin-top: 5%; margin-left: 20%;">
   <tr>
     <th>    <img src="/images/face.jpg" width="100" height="100" border="5">    </th>
-    <th><p>
+    <th><div id ="out"></div>
+        <p>
         Computer Science student, web developer, 
       </p></th> 
   </tr>
   <tr>
-    <td><h1>Louis Ambrose</h1>
+      <td><p>Username: </p><div id="pname"></div>
       <h4>CS Student</h4></td>
       
     <td ><ul>
@@ -27,4 +28,3 @@
     <td>  <button> Message</button>  </td>
   </tr>
 </table>
-<div id="out"></div>

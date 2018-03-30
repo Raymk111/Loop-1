@@ -37,7 +37,7 @@ router.post('/register', function(req, res, next){
             newUser.save(function(err, user) {
                 if (err)
                     throw err;
-	     res.cookie('Authorization', 'Bearer ' + user.access_token); 
+	     res.cookie('Authorization', username + ' ' + user.access_token); 
                 res.json({'success' : 'account created'});
 
             });
@@ -67,7 +67,7 @@ router.post('/login', function(req, res, next){
                 // Success : Assign new access token for the session
                 user.access_token = createJwt({user_name: username});
                 user.save();
-                res.cookie('Authorization', 'Bearer ' + user.access_token); 
+                res.cookie('Authorization', username + ' ' + user.access_token); 
                 res.json({'success' : 'loggedIn'});
             }
             else {
