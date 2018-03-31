@@ -75,13 +75,14 @@ function getProfile(name)
 		if(res[0] != null)
 		{
 			profile = "";
-			profile += res[0].user_name;
-			profile += " ";
-			profile += res[0].full_name;
+            profile += "Name: " + res[0].full_name;
+            profile += " <br/> ";
+			profile += "Username: " +res[0].user_name;
+
 		}
 		else
 		{
-			profile = "Not Found";
+			profile = "Profile not Found";
 		}
 });
 }
@@ -98,9 +99,8 @@ function getName()
 {
     var myName = getCookie("Authorization");
     myName = myName.split(" ");
-    myName[0];
    
-    $("#pname").html(myName);
+   document.getElementById("pname").innerHTML = myName[0];
 }
 
 function getBreaking(){
