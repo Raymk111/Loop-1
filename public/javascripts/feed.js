@@ -10,7 +10,7 @@ $(document).ready( function()
       	   $("#charRemaining").html(totalCharacters - inputText.length);
   	});
   getComments();
-  getName();
+  
   getBreaking();
 });
 
