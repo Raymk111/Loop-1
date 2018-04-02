@@ -26,6 +26,10 @@ router.get('/breaking', function(req, res, next) {
 	res.render('breaking');
 });
 
+router.get('/play', function(req, res, next) {
+        res.render('play');
+});
+
 router.get('/aboutus', function(req, res, next) {
         res.render('aboutus');
 });
@@ -82,6 +86,7 @@ router.post('/addComment', function(req, res, next) {
 /**
  * Returns all comments from our database
  */
+
 router.get('/getComments', function(req, res, next) {
 
     Comment.find({}, function (err, comments) {
@@ -91,10 +96,10 @@ router.get('/getComments', function(req, res, next) {
     });
 });
 
-router.get('/getComments:loop', function(req, res, next) {
+router.get('/getComments/:loop', function(req, res, next) {
 
     var loop = req.params.loop;
-    Comment.find({'loop':loop}, function (err, comments) {
+    Comment.find({loop:loop}, function (err, comments) {
         if (err)
             res.send(err);
         res.json(comments);
