@@ -11,7 +11,6 @@ $(document).ready( function()
       	   $("#charRemaining").html(totalCharacters - inputText.length);
   	});
   getComments();
-  getName();
 });
 
 $("#postForm").submit(function (event) { event.preventDefault(); $.post("/addComment", 
