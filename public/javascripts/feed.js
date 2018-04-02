@@ -112,3 +112,5 @@ function getBreaking(){
 		$("#breakingNews").html(main);
 	});
 }
+//$("#bioForm").submit(function (event) { event.preventDefault(); $.put("/editUserBio", {
+ //   bio: event.target.inputBio.value }, function (result) ); }); 
