@@ -43,7 +43,16 @@ router.get('/loops', function(req, res, next) {
 });
 
 router.get('/profile', function(req, res, next) {
-        res.render('profile');
+	try{
+                var jwtString = req.cookies.Authorization.split(" ");
+                var profile = verifyJwt(jwtString[1]);
+                if(profile){
+                        res.render('profile', {});
+                }
+        }
+        catch(err){
+                res.render('error', {message : "You are not logged in."});
+        }
 });
 
 router.get('/loops/sports', function(req, res, next) {
@@ -104,6 +113,37 @@ router.get('/getComments/:loop', function(req, res, next) {
             res.send(err);
         res.json(comments);
     });
+});
+
+router.get('/generic', function(req, res, next) {
+  res.render('generic', {});
+});
+
+router.get('/chooseLoop/:loop', function(req, res, next) {
+
+    var loop = req.params.loop;
+    var posts = "";
+
+	try{
+                var jwtString = req.cookies.Authorization.split(" ");
+                var profile = verifyJwt(jwtString[1]);
+                if(profile){
+                        Comment.find({loop:loop}, function (err, comments) {
+        		if (err)
+        		{ 
+        		   res.send(err);
+        		}
+        		    for(var i=0; i<comments.length; i++) {
+        		                posts = "<div class='well'><div class='row'><div class='col-xs-8'>"
+        		                + comments[i].comment + "</div><div class='col-xs-2'>" + comments[i].date_created +"</div></div></div>" + posts
+        		        }
+        		res.render('generic',{loops : posts});
+        		});
+                }
+        }
+        catch(err){
+                res.render('error', {message : "Access Denied. You are not logged in."});
+        }
 });
 
 router.get('/getUser/:user_name', function(req, res, next) {
