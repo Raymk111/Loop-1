@@ -1,76 +1,31 @@
-<div class="well col-xs-6 col-xs-offset-3">
-    <div class="row col-xs-10 col-xs-offset-1">
-        <form class="form-horizontal" role="form" id="postForm">
-            <div class="row">
-                <div class="form-group">
-                    <div class="col-xs-12">
-                    <textarea class="form-control required" style="min-width: 100%" rows="3"    id="inputPost" placeholder="Got something to say?" maxlength="140"></textarea>
-                        <label id="charRemaining" for="inputPost">140</label>
-                    </div>
-                </div>
-            </div>
-            <div class="container">
-                <div class="dropdown col-xs-1">
-                    <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">Location
-                        <span class="caret"></span></button>
-                    <ul class="dropdown-menu">
-                        <li class="dropdown-header">Colleges</li>
-                        <li><a href="#">DCU</a></li>
-                        <li><a href="#">NUIG</a></li>
-                        <li><a href="#">UCC</a></li>
-                        <li><a href="#">UL</a></li>
-                        <li class="divider"></li>
-                        <li class="dropdown-header">Cities</li>
-                        <li><a href="#">Cork</a></li>
-                        <li><a href="#">Dublin</a></li>
-                        <li><a href="#">Galway</a></li>
-                    </ul>
-                </div>
-                <div class="dropdown col-xs-4">
-                    <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">Loops
-                        <span class="caret"></span></button>
-                    <ul class="dropdown-menu">
-                        <li class="dropdown-submenu">
-                            <a class="test" tabindex="-1" href="#">Sports<span class="caret"></span></a>
-                            <ul class="dropdown-menu">
-                                <li><a tabindex="-1" href="#">Basketball</a></li>
-                                <li><a tabindex="-1" href="#">Football</a></li>
-                            </ul>
-                        </li>
-                        
-                        <li class="dropdown-submenu">
-                            <a class="test" tabindex="-1" href="#">Politics<span class="caret"></span></a>
-                            <ul class="dropdown-menu">
-                                <li><a tabindex="-1" href="#">Donald Trump</a></li>
-                                <li><a tabindex="-1" href="#">Ireland</a></li>
-                            </ul>
-                        </li>
-                        
-                        <li class="dropdown-submenu">
-                            <a class="test" tabindex="-1" href="#">College<span class="caret"></span></a>
-                            <ul class="dropdown-menu">
-                                <li><a tabindex="-1" href="#">Arts</a></li>
-                                <li><a tabindex="-1" href="#">Engineering</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                </div>
-                <div class="col-xs-1">
-                    <button type="text" class="btn btn-primary">Post</button>
-                </div>
-            </div>
-        </form>
+<div class="row centered">
+    <h2>Select Loop</h2>
+</div>
+
+<div class="row push50" id="loopMenu">
+<div class="col-xs-12 col-lg-4 centered">
+    <a href="/loops/college"><img src="images/ucd.jpg" width="50%" height="100%"></a>
+    <h4>UCD</h4>
     </div>
-    <div class="row col-sm-10 col-sm-offset-1">
-    <!--<button type="button" class="btn btn-primary" id="btn-count">
-        Comments <span class="badge badge-light" id="count">0</span>
-    </button>-->
+    <div class="col-xs-12 col-lg-4 centered">            
+        <a href="/loops/politics"><img src="images/nuig.jpg" width="50%" height="100%"></a>
+        <h4>NUIG</h4>
+    </div>
+    <div class="col-xs-12 col-lg-4 centered"> 
+    <a href="/loops/tv"><img src="images/ul.jpg" width="50%" height="100%"></img></a>
+    <h4>UL</h4>
 </div>
 </div>
-<div class="row col-sm-8 col-sm-offset-2 feedLayout" id="feedPosts" >
-</div>  
 
+<div class="row">
+    <div class="col-xs-12 col-lg-6 centered ">            
+        <a href="/loops/sports"><img src="images/dcu.jpg" width="50%" height="40%"></a>
+        <h4>DCU</h4>
+    </div>
+    <div class="col-xs-12 col-lg-6 centered">            
+        <a href="/loops/weather"><img src="images/ucc.png" width="50%" height="100%"></a>
+        <h4>UCC</h4>
+    </div>
+</div>
 
-
-
-
+<div style="padding-top:50px"></div>
