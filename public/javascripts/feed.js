@@ -4,6 +4,7 @@ var profile;
 
 $(document).ready( function()
 {
+	getBreaking();
   $("#postForm").keyup(function (event)
 	{
       	   var inputText = event.target.value;
@@ -11,7 +12,6 @@ $(document).ready( function()
   	});
   getComments();
   getName();
-  getBreaking();
 });
 
 $("#postForm").submit(function (event) { event.preventDefault(); $.post("/addComment", 
@@ -30,9 +30,9 @@ function getComments(){
 	$.get( "/getComments", function( data ) {
 		var posts = "";
 		for(var i=0; i<data.length; i++) {
-			posts = "<div class='well'><div class='row'><div class='col-xs-9'>"
-			+ data[i].comment + "</div><div class='col-xs-3'>" +
-			"<button type='button' name='"+data[i]._id+"' class='btn btn-danger'>" +"Delete</button></div></div></div></div>" + posts;
+			posts = "<div class='well'><div class='row'><div class='col-xs-8'>"
+			+ data[i].comment + "</div><div class='col-xs-2'>" +
+			"<button type='button' name='"+data[i]._id+"' class='btn btn-danger'>" +"Delete</button></div><div class='col-xs-2'>"+ data[i].date_created +"</div></div></div></div>" + posts;
  		}
 		$("#feedPosts").html( posts );
 		$("#count").html(data.length);
@@ -106,8 +106,8 @@ function getName()
 function getBreaking(){
 	$.get( "/getComments", function( data ) {
 		var main = "";
-		for(var i=2; i<data.length; i++){
-			main = "<div class='col-xs-9'>"
+		for(var i=0; i<data.length; i++){
+			main = "<div>"
 				+ data[i].comment + "</div>"
 		}
 		$("#breakingNews").html(main);
