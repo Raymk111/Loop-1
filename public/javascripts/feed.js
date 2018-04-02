@@ -77,6 +77,8 @@ function getProfile(name)
             profile += "Name: " + res[0].full_name;
             profile += " <br/> ";
 			profile += "Username: " +res[0].user_name;
+            profile += " <br/> ";
+			profile += "bio: " +res[0].bio;
 
 		}
 		else
@@ -111,6 +113,27 @@ function getBreaking(){
 		}
 		$("#breakingNews").html(main);
 	});
-}
-//$("#bioForm").submit(function (event) { event.preventDefault(); $.put("/editUserBio", {
- //   bio: event.target.inputBio.value }, function (result) ); }); 
+}    
+
+$("#bioForm").submit(function (event) { event.preventDefault(); $.put("/editUserBio", {
+   bio: event.target.inputBio.value },  function (result) {} );
+	
+}); 
+
+jQuery.each( [ "put", "delete" ], function( i, method ) {
+  jQuery[ method ] = function( url, data, callback, type ) {
+    if ( jQuery.isFunction( data ) ) {
+      type = type || callback;
+      callback = data;
+      data = undefined;
+    }
+
+    return jQuery.ajax({
+      url: url,
+      type: method,
+      dataType: type,
+      data: data,
+      success: callback
+    });
+  };
+});
