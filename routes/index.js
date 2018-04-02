@@ -63,16 +63,8 @@ router.get('/loops/college', function(req, res, next) {
   res.render('college', {});
 });
 
-router.get('/loops/weather', function(req, res, next) {
-  res.render('weather', {});
-});
-
 router.get('/loops/tv', function(req, res, next) {
   res.render('tv', {});
-});
-
-router.get('/loops/politics', function(req, res, next) {
-  res.render('politics', {});
 });
 
 /**
