@@ -129,6 +129,21 @@ router.put('/updateComment/:id', function(req, res, next){
     });
 });
 
+router.put('/editUserBio', function(req, res, next){
+    var jwtString = req.cookies.Authorization.split(" ");
+    var profile = verifyJwt(jwtString[1]);
+    var username = jwtString[0];
+    if(profile)
+    {
+         User.update({user_name:username}, req.body, function (err) {
+        if (err)
+            res.send(err);
+
+        res.json({status : "Successfully updated Bio"});
+    });
+    }
+});
+
 /**
  * Deletes a comment from the database
  */
