@@ -38,6 +38,15 @@ $("#log-form").submit(function (event) { event.preventDefault();
 
 });
 
+ function signOut() {
+ var auth2 = gapi.auth2.getAuthInstance();
+ auth2.signOut().then(function () {
+ console.log('User signed out.');
+      });
+     Cookies.remove('Authorization');            
+	$(location).attr('href', '/');
+    }
+
 function onSignIn(googleUser)
 {
   var profile = googleUser.getBasicProfile();
