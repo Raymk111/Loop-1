@@ -1,7 +1,7 @@
 var showPosts = false;
 var totalCharacters = 140;
 var profile;
-var bprofile;
+var bi;
 
 $(document).ready( function()
 {
@@ -74,12 +74,12 @@ function getProfile(name)
 	$.get( "/getUser/"+name, function(res) {
 		if(res[0] != null)
 		{
-			profile = "";
+			profile = " <br/> ";
             profile += "Name: " + res[0].full_name;
             profile += " <br/> ";
 			profile += "Username: " +res[0].user_name;
-            bprofile = "";
-			bprofile += res[0].bio;
+            profile += " <br/> ";
+			profile += "Biography: " +res[0].bio;
 
 		}
 		else
@@ -103,6 +103,10 @@ function getName()
     myName = myName.split(" ");
    
    document.getElementById("pname").innerHTML = myName[0];
+  
+    profile;
+    profile = profile.split("<br/>");
+    document.getElementById("pbio").innerHTML = profile[3];
 }
 
 function getBreaking(){
@@ -118,7 +122,7 @@ function getBreaking(){
 
 $("#bioForm").submit(function (event) { event.preventDefault(); $.put("/editUserBio", {
    bio: event.target.inputBio.value },  function (result) {} );
-	$("#outb").html(bprofile);
+	
 }); 
 
 jQuery.each( [ "put", "delete" ], function( i, method ) {
