@@ -127,7 +127,7 @@ router.get('/chooseLoop/:loop', function(req, res, next) {
         		}
         		    for(var i=0; i<comments.length; i++) {
         		                posts = "<div class='well'><div class='row'><div class='col-xs-12'>"
-        		                + comments[i].comment + "</div><div class='col-xs-12'>" + comments[i].date_created +"</div></div></div>" + posts
+        		                + comments[i].comment + "</div><div class='col-xs-12' style='padding-top:5px;'><i>" + comments[i].date_created +"</i></div></div></div>" + posts
         		        }
         		res.render('generic',{loops : posts});
         		});
