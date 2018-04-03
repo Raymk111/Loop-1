@@ -1,7 +1,8 @@
 var showPosts = false;
 var totalCharacters = 140;
 var profile;
-var bi;
+var bprofile;
+var user_name = getCookie("Authorization").split(" ");
 
 $(document).ready( function()
 {
@@ -19,7 +20,8 @@ $("#postForm").submit(function (event) { event.preventDefault(); $.post("/addCom
 		comment: event.target.inputPost.value,
 		loop: event.target.loopSelect.value,
 		college: event.target.collegeSelect.value,
-		token: getCookie("Authorization")
+		token: getCookie("Authorization"),
+		user_name: user_name[0]
 	},  function (result) {
 		$("#charRemaining").html(totalCharacters); event.target.reset();
 	});
@@ -32,7 +34,8 @@ function getComments(){
 		for(var i=0; i<data.length; i++) {
 			posts = "<div class='well'><div class='row'><div class='col-xs-8'>"
 			+ data[i].comment + "</div><div class='col-xs-2'>" +
-			"<button type='button' name='"+data[i]._id+"' class='btn btn-danger'>" +"Delete</button></div><div class='col-xs-2'>"+ data[i].date_created +"</div></div></div></div>" + posts;
+			"<button type='button' name='"+data[i]._id+"' class='btn btn-danger'>" +"Delete</button></div><div class='col-xs-2'>"+ data[i].date_created 
+			+"</div></div><div class='row'><div class='col-xs-1'></div><div class='col-xs-11'><i>" + data[i].user_name + " " +data[i].loop + " " + "</i></div></div></div>" + posts;
  		}
 		$("#feedPosts").html( posts );
 		$("#count").html(data.length);
@@ -74,13 +77,12 @@ function getProfile(name)
 	$.get( "/getUser/"+name, function(res) {
 		if(res[0] != null)
 		{
-			profile = " <br/> ";
+			profile = "";
             profile += "Name: " + res[0].full_name;
             profile += " <br/> ";
 			profile += "Username: " +res[0].user_name;
-            profile += " <br/> ";
-			profile += "Biography: " +res[0].bio;
-
+            bprofile = "";
+			bprofile += res[0].bio;
 		}
 		else
 		{
@@ -103,10 +105,6 @@ function getName()
     myName = myName.split(" ");
    
    document.getElementById("pname").innerHTML = myName[0];
-  
-    profile;
-    profile = profile.split("<br/>");
-    document.getElementById("pbio").innerHTML = profile[3];
 }
 
 function getBreaking(){
@@ -122,7 +120,7 @@ function getBreaking(){
 
 $("#bioForm").submit(function (event) { event.preventDefault(); $.put("/editUserBio", {
    bio: event.target.inputBio.value },  function (result) {} );
-	
+	$("#outb").html(bprofile);
 }); 
 
 jQuery.each( [ "put", "delete" ], function( i, method ) {
