@@ -152,9 +152,9 @@ router.get('/chooseCollege/:college', function(req, res, next) {
                            res.send(err);
                         }
                             for(var i=0; i<comments.length; i++) {
-                                        posts = "<div class='well'><div class='row'><div class='col-xs-8'>"
-                                        + comments[i].comment + "</div><div class='col-xs-2'>" + comments[i].date_created +"</div></div></div>" + posts
-                                }
+                                posts = "<div class='well'><div class='row'><div class='col-xs-12'>"
+                                + comments[i].comment + "</div><div class='col-xs-12' style='padding-top:5px;'><i>" + comments[i].date_created +"</i></div></div></div>" + posts
+                        }
                         res.render('generic',{loops : posts});
                         });
                 }

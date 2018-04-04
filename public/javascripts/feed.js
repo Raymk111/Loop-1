@@ -1,7 +1,7 @@
 var showPosts = false;
 var totalCharacters = 140;
 var profile;
-var bo;
+var bprofile;
 var user_name = getCookie("Authorization").split(" ");
 
 
@@ -36,9 +36,9 @@ function getComments(){
 		for(var i=0; i<data.length; i++) {
 			date = data[i].date_created.split("T");
 			time = date[1].split(".");
-			posts = "<div class='well'><div class='row'><div class='col-xs-10'>"
-			+ data[i].comment + "</div>" + "<div class='col-xs-2'>" +"<button type='button' name='"+data[i]._id+"' class='btn btn-danger'>" +"Delete</button></div>"
-			+"</div><div class='row'><div class='col-xs-1'></div><div class='col-xs-11'><i>" + data[i].user_name + " - " 
+			posts = "<div class='well'><div class='row col-xs-12'><div class='col-lg-10 col-xs-10'>"
+			+ data[i].comment + "</div>" + "<div class='col-lg-2 col-xs-12'>" +"<button type='button' name='"+data[i]._id+"' class='btn btn-danger'>" +"Delete</button></div>"
+			+"</div><div class='row'><div class='col-lg-1 col-xs-0'></div><div class='col-lg-11 col-xs-12'><i>" + data[i].user_name + " - " 
 			+data[i].loop + " - " + data[i].college + " - " + date[0] + " - " + time[0] + "</i></div></div></div>" + posts;
  		}
 		$("#feedPosts").html( posts );
@@ -81,10 +81,12 @@ function getProfile(name)
 	$.get( "/getUser/"+name, function(res) {
 		if(res[0] != null)
 		{
-            profile = "";
-            profile += res[0].full_name;
-			profile += " " +res[0].user_name;
-			profile +=" " +res[0].bio;
+			profile = "";
+            profile += "Name: " + res[0].full_name;
+            profile += " <br/> ";
+			profile += "Username: " +res[0].user_name;
+            bprofile = "";
+			bprofile += res[0].bio;
 		}
 		else
 		{
@@ -104,19 +106,9 @@ $("#search_user").click(function (event) {
 function getName()
 {
     var myName = getCookie("Authorization");
-    var postMess = "";
     myName = myName.split(" ");
-    getProfile(myName[0]);
-    while(profile == undefined)
-        {}
-    profile = profile.split(" ");
    
-   document.getElementById("pname").innerHTML = profile[0] + profile[1] + profile[2];
-    for(var i = 3; i<profile.length; i++)
-        {
-            postMess += profile[i] + " ";
-        }
-    $("#pbio").html(postMess);
+   document.getElementById("pname").innerHTML = myName[0];
 }
 
 function getBreaking(){
@@ -132,6 +124,7 @@ function getBreaking(){
 
 $("#bioForm").submit(function (event) { event.preventDefault(); $.put("/editUserBio", {
    bio: event.target.inputBio.value },  function (result) {} );
+	$("#outb").html(bprofile);
 }); 
 
 jQuery.each( [ "put", "delete" ], function( i, method ) {
