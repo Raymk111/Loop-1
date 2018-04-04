@@ -31,9 +31,10 @@ $("#postForm").submit(function (event) { event.preventDefault(); $.post("/addCom
 
 function getComments(){
 	$.get( "/getComments", function( data ) {
-		var date, time;
 		var posts = "";
 		for(var i=0; i<data.length; i++) {
+			var date = 0; 
+			var time = 0;
 			date = data[i].date_created.split("T");
 			time = date[1].split(".");
 			posts = "<div class='well'><div class='row col-xs-12'><div class='col-lg-10 col-xs-10'>"
@@ -114,7 +115,7 @@ function getName()
 function getBreaking(){
 	$.get( "/getComments", function( data ) {
 		var main = "<div class='ticker-wrap'><div class='ticker'>";
-		for(var i=0; i<data.length; i++){
+		for(var i=0; i<10; i++){
 			main += "<div class='ticker__item'>" + data[i].comment + "</div>"
 		}
 		main = main + "</div></div>"
