@@ -4,6 +4,7 @@ var profile;
 var bprofile;
 var user_name = getCookie("Authorization").split(" ");
 
+
 $(document).ready( function()
 {
 	getBreaking();
@@ -30,12 +31,15 @@ $("#postForm").submit(function (event) { event.preventDefault(); $.post("/addCom
 
 function getComments(){
 	$.get( "/getComments", function( data ) {
+		var date, time;
 		var posts = "";
 		for(var i=0; i<data.length; i++) {
-			posts = "<div class='well'><div class='row'><div class='col-xs-8'>"
-			+ data[i].comment + "</div><div class='col-xs-2'>" +
-			"<button type='button' name='"+data[i]._id+"' class='btn btn-danger'>" +"Delete</button></div><div class='col-xs-2'>"+ data[i].date_created 
-			+"</div></div><div class='row'><div class='col-xs-1'></div><div class='col-xs-11'><i>" + data[i].user_name + " - " +data[i].loop + " - " + data[i].college +"</i></div></div></div>" + posts;
+			date = data[i].date_created.split("T");
+			time = date[1].split(".");
+			posts = "<div class='well'><div class='row'><div class='col-xs-10'>"
+			+ data[i].comment + "</div>" + "<div class='col-xs-2'>" +"<button type='button' name='"+data[i]._id+"' class='btn btn-danger'>" +"Delete</button></div>"
+			+"</div><div class='row'><div class='col-xs-1'></div><div class='col-xs-11'><i>" + data[i].user_name + " - " 
+			+data[i].loop + " - " + data[i].college + " - " + date[0] + " - " + time[0] + "</i></div></div></div>" + posts;
  		}
 		$("#feedPosts").html( posts );
 		$("#count").html(data.length);
@@ -109,11 +113,11 @@ function getName()
 
 function getBreaking(){
 	$.get( "/getComments", function( data ) {
-		var main = "<div class='ticker'>";
+		var main = "<div class='ticker-wrap'><div class='ticker'>";
 		for(var i=0; i<data.length; i++){
 			main += "<div class='ticker__item'>" + data[i].comment + "</div>"
 		}
-		main = main + "</div>"
+		main = main + "</div></div>"
 		$("#breakingNews").html(main);
 	});
 }    
