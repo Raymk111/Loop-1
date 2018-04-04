@@ -1,7 +1,7 @@
 var showPosts = false;
 var totalCharacters = 140;
 var profile;
-var bprofile;
+var bo;
 var user_name = getCookie("Authorization").split(" ");
 
 
@@ -81,12 +81,10 @@ function getProfile(name)
 	$.get( "/getUser/"+name, function(res) {
 		if(res[0] != null)
 		{
-			profile = "";
-            profile += "Name: " + res[0].full_name;
-            profile += " <br/> ";
-			profile += "Username: " +res[0].user_name;
-            bprofile = "";
-			bprofile += res[0].bio;
+            profile = "";
+            profile += res[0].full_name;
+			profile += " " +res[0].user_name;
+			profile +=" " +res[0].bio;
 		}
 		else
 		{
@@ -106,9 +104,19 @@ $("#search_user").click(function (event) {
 function getName()
 {
     var myName = getCookie("Authorization");
+    var postMess = "";
     myName = myName.split(" ");
+    getProfile(myName[0]);
+    while(profile == undefined)
+        {}
+    profile = profile.split(" ");
    
-   document.getElementById("pname").innerHTML = myName[0];
+   document.getElementById("pname").innerHTML = profile[0] + profile[1] + profile[2];
+    for(var i = 3; i<profile.length; i++)
+        {
+            postMess += profile[i] + " ";
+        }
+    $("#pbio").html(postMess);
 }
 
 function getBreaking(){
@@ -124,7 +132,6 @@ function getBreaking(){
 
 $("#bioForm").submit(function (event) { event.preventDefault(); $.put("/editUserBio", {
    bio: event.target.inputBio.value },  function (result) {} );
-	$("#outb").html(bprofile);
 }); 
 
 jQuery.each( [ "put", "delete" ], function( i, method ) {
