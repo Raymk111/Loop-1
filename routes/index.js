@@ -96,6 +96,16 @@ router.get('/getComments', function(req, res, next) {
     });
 });
 
+router.get('/getMyPosts', function(req, res, next) {
+    var jwtString = req.cookies.Authorization.split(" ");
+    var profile = jwtString[0];
+    Comment.find({user_name:profile}, function (err, comments) {
+        if (err)
+            res.send(err);
+        res.json(comments);
+    });
+});
+
 router.get('/getComments/:loop', function(req, res, next) {
 
     var loop = req.params.loop;
