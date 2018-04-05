@@ -77,8 +77,17 @@ function getCookie(cname) {
 }
 
 function getProfile(name)
-{
+{   
+    if(name == "")
+        {
+            var myName = getCookie("Authorization");
+            myName = myName.split(" ");
+            myName[0];
+            getProfile(myName[0]);
+            profile;
+        }
 	$.get( "/getUser/"+name, function(res) {
+        
 		if(res[0] != null)
 		{
 			profile = " <br/> ";
@@ -107,11 +116,11 @@ $("#search_user").click(function (event) {
 
 function getName()
 {
-    var myName = getCookie("Authorization");
-    myName = myName.split(" ");
-    myName[0];
-    getProfile(myName[0]);
-    document.getElementById("pname").innerHTML = myName[0];
+   if(profile == undefined)
+       {
+          setTimeout(getName, 500);
+       }
+    document.getElementById("pname").innerHTML =  profile;
 }
 
 function getBreaking(){
@@ -146,4 +155,11 @@ jQuery.each( [ "put", "delete" ], function( i, method ) {
       success: callback
     });
   };
+});
+
+
+$("#output1").ready( function()
+{   
+    getProfile('');
+	getName();
 });

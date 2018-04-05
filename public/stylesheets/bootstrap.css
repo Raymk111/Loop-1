@@ -5,6 +5,15 @@
  */
 
 /*! normalize.css v2.1.3 | MIT License | git.io/normalize */
+.fontE  {
+    color: white;
+    font-size: 15px;
+}
+
+.pImg {
+    background-image: url("../images/pro.jpg");
+    width: 100%;
+}
 
 input[type=text], select {
     padding: 12px 20px;
