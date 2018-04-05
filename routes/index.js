@@ -23,10 +23,6 @@ router.get('/feed', function(req, res, next) {
         }
 });
 
-router.get('/breaking', function(req, res, next) {
-	res.render('breaking');
-});
-
 router.get('/play', function(req, res, next) {
         res.render('play');
 });
@@ -220,7 +216,9 @@ router.put('/editUserBio', function(req, res, next){
 router.delete('/removeComment/:id', function(req, res, next){
 
     var id = req.params.id;
-    Comment.remove({_id:id}, function (err) {
+    var jwtString = req.cookies.Authorization.split(" ");
+    var username = jwtString[0];
+    Comment.remove({_id:id, user_name:username}, function (err) {
         if (err)
             res.send(err);
 
@@ -228,6 +226,37 @@ router.delete('/removeComment/:id', function(req, res, next){
     });
 });
 module.exports = router;
+
+router.put('/vote/:id', function(req, res, next){
+	var id = req.params.id;
+	var jwtString = req.cookies.Authorization.split(" ");
+	try{
+                var profile = verifyJwt(jwtString[1]);
+                if(profile){
+                                var user_name = jwtString[0];
+        			Comment.find({_id:id}, function(err, comment){
+                	if(err)
+                	{
+                        	res.send(err);
+                	}
+               			 if(comment[0].voted.indexOf(user_name) >= 0)
+               			 {
+                		        res.send({status : "already voted"});
+                		}
+               			 else
+               			 {
+                			        comment[0].up_votes = comment[0].up_votes + req.body.vote;
+                			        comment[0].voted += " " + user_name;
+                			        Comment.update({_id:id}, {voted : comment[0].voted, up_votes : comment[0].up_votes}, function(err){if(err){res.send(err)}})
+                			        res.send({status:"Up - Voted"});
+                			}
+			})
+                }
+        }
+        catch(err){
+                res.render('error', {message : "You are not logged in."});
+        }
+});
 
 function verifyJwt(jwtString)
 {
