@@ -3,6 +3,7 @@ var router = express.Router();
 var Comment = require('../models/comments');
 var jwt = require('jsonwebtoken');
 var User = require('../models/users');
+var moment = require('moment-timezone');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -73,6 +74,7 @@ router.get('/loops/tv', function(req, res, next) {
 router.post('/addComment', function(req, res, next) {
     // Extract the request body which contains the comments
     comment = new Comment(req.body);
+    comment.date_created = moment().tz("Europe/Dublin").format();
     comment.save(function (err, savedComment) {
         if (err)
             throw err;
