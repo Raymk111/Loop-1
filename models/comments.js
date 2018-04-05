@@ -8,11 +8,11 @@ var commentsSchema = new Schema({
     comment: {type: String},
     date_created: {type: Date, default: moment().tz("Europe/Dublin").format() },
     up_votes: {type: Number, default: 0},
-    down_votes: {type: Number, default: 0},
     loop: {type: String},
     college: {type: String},
     location: {type: String},
-    token: {type: String}
+    token: {type: String},
+    voted: {type: String, default: ""}
 });
 
 module.exports = mongoose.model('Comment', commentsSchema);
