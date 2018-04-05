@@ -81,13 +81,14 @@ function getProfile(name)
 	$.get( "/getUser/"+name, function(res) {
 		if(res[0] != null)
 		{
-			profile = "";
+			profile = " <br/> ";
             profile += "Name: " + res[0].full_name;
             profile += " <br/> ";
 			profile += "Username: " +res[0].user_name;
-            bprofile = "";
-			bprofile += res[0].bio;
+            profile += " <br/> ";
+			profile += "Biography: " +res[0].bio;
 		}
+        
 		else
 		{
 			profile = "Profile not Found";
@@ -103,12 +104,14 @@ $("#search_user").click(function (event) {
 	$("#out").html(profile);
 });
 
+
 function getName()
 {
     var myName = getCookie("Authorization");
     myName = myName.split(" ");
-   
-   document.getElementById("pname").innerHTML = myName[0];
+    myName[0];
+    getProfile(myName[0]);
+    document.getElementById("pname").innerHTML = myName[0];
 }
 
 function getBreaking(){
