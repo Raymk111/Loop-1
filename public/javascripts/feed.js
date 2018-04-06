@@ -77,7 +77,7 @@ function getCookie(cname) {
 }
 
 function getProfile(name)
-{   
+{
     if(name == "")
         {
             var myName = getCookie("Authorization");
@@ -87,7 +87,7 @@ function getProfile(name)
             profile;
         }
 	$.get( "/getUser/"+name, function(res) {
-        
+
 		if(res[0] != null)
 		{
 			profile = " <br/> ";
@@ -97,7 +97,6 @@ function getProfile(name)
             profile += " <br/> ";
 			profile += "Biography: " +res[0].bio;
 		}
-        
 		else
 		{
 			profile = "Profile not Found";
@@ -109,7 +108,6 @@ $("#search_user").click(function (event) {
 	event.preventDefault();
 	var name = document.getElementById("user_name").value;
 	getProfile(name);
- 		
 	$("#out").html(profile);
 });
 
@@ -120,24 +118,30 @@ function getName()
        {
           setTimeout(getName, 500);
        }
-    document.getElementById("pname").innerHTML =  profile;
+   else
+    {
+    	document.getElementById("pname").innerHTML =  profile;
+    }
 }
 
 function getBreaking(){
 	$.get( "/getComments", function( data ) {
 		var main = "<div class='ticker-wrap'><div class='ticker'>";
-		for(var i=0; i<10; i++){
-			main += "<div class='ticker__item'>" + data[i].comment + "</div>"
+		if(data.length >=10)
+		{
+			for(var i=0; i<10; i++){
+				main += "<div class='ticker__item'>" + data[i].comment + "</div>";
+			}
+			main = main + "</div></div>";
+			$("#breakingNews").html(main);
 		}
-		main = main + "</div></div>"
-		$("#breakingNews").html(main);
 	});
-}    
+}
 
 $("#bioForm").submit(function (event) { event.preventDefault(); $.put("/editUserBio", {
    bio: event.target.inputBio.value },  function (result) {} );
 	$("#outb").html(bprofile);
-}); 
+});
 
 jQuery.each( [ "put", "delete" ], function( i, method ) {
   jQuery[ method ] = function( url, data, callback, type ) {
@@ -155,11 +159,4 @@ jQuery.each( [ "put", "delete" ], function( i, method ) {
       success: callback
     });
   };
-});
-
-
-$("#output1").ready( function()
-{   
-    getProfile('');
-	getName();
 });
