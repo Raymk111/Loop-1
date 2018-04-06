@@ -86,10 +86,11 @@ router.post('/addComment', function(req, res, next) {
  */
 
 router.get('/getComments', function(req, res, next) {
-
+    var mysort = {date_created : 1};
     Comment.find({}, function (err, comments) {
         if (err)
             res.send(err);
+	comments.sort(mysort);
         res.json(comments);
     });
 });
@@ -97,9 +98,11 @@ router.get('/getComments', function(req, res, next) {
 router.get('/getMyPosts', function(req, res, next) {
     var jwtString = req.cookies.Authorization.split(" ");
     var profile = jwtString[0];
+    var mysort = {date_created : 1};
     Comment.find({user_name:profile}, function (err, comments) {
         if (err)
             res.send(err);
+        comments.sort(mysort);
         res.json(comments);
     });
 });
@@ -107,9 +110,11 @@ router.get('/getMyPosts', function(req, res, next) {
 router.get('/getComments/:loop', function(req, res, next) {
 
     var loop = req.params.loop;
+    var mysort = {date_created : 1};
     Comment.find({loop:loop}, function (err, comments) {
         if (err)
             res.send(err);
+        comments.sort(mysort);
         res.json(comments);
     });
 });
@@ -122,7 +127,7 @@ router.get('/chooseLoop/:loop', function(req, res, next) {
 
     var loop = req.params.loop;
     var posts = "";
-
+    var mysort = {date_created : 1};
 	try{
                 var jwtString = req.cookies.Authorization.split(" ");
                 var profile = verifyJwt(jwtString[1]);
@@ -132,6 +137,7 @@ router.get('/chooseLoop/:loop', function(req, res, next) {
         		{ 
         		   res.send(err);
         		}
+        		comments.sort(mysort);
         		    for(var i=0; i<comments.length; i++) {
         		                posts = "<div class='well'><div class='row'><div class='col-xs-12'>"
         		                + comments[i].comment + "</div><div class='col-xs-12' style='padding-top:5px;'><i>" + comments[i].date_created +"</i></div></div></div>" + posts
@@ -149,7 +155,7 @@ router.get('/chooseCollege/:college', function(req, res, next) {
 
     var college = req.params.college;
     var posts = "";
-
+    var mysort = {date_created : 1};
         try{
                 var jwtString = req.cookies.Authorization.split(" ");
                 var profile = verifyJwt(jwtString[1]);
@@ -159,6 +165,7 @@ router.get('/chooseCollege/:college', function(req, res, next) {
                         { 
                            res.send(err);
                         }
+		        comments.sort(mysort);
                             for(var i=0; i<comments.length; i++) {
                                 posts = "<div class='well'><div class='row'><div class='col-xs-12'>"
                                 + comments[i].comment + "</div><div class='col-xs-12' style='padding-top:5px;'><i>" + comments[i].date_created +"</i></div></div></div>" + posts
