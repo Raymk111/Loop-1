@@ -134,15 +134,11 @@ router.get('/chooseLoop/:loop', function(req, res, next) {
                 if(profile){
                         Comment.find({loop:loop}, function (err, comments) {
         		if (err)
-        		{ 
+        		{
         		   res.send(err);
         		}
         		comments.sort(mysort);
-        		    for(var i=0; i<comments.length; i++) {
-        		                posts = "<div class='well'><div class='row'><div class='col-xs-12'>"
-        		                + comments[i].comment + "</div><div class='col-xs-12' style='padding-top:5px;'><i>" + comments[i].date_created +"</i></div></div></div>" + posts
-        		        }
-        		res.render('generic',{loops : posts});
+        		res.render('generic',{"comment" : comments});
         		});
                 }
         }
@@ -162,15 +158,11 @@ router.get('/chooseCollege/:college', function(req, res, next) {
                 if(profile){
                         Comment.find({college:college}, function (err, comments) {
                         if (err)
-                        { 
+                        {
                            res.send(err);
                         }
 		        comments.sort(mysort);
-                            for(var i=0; i<comments.length; i++) {
-                                posts = "<div class='well'><div class='row'><div class='col-xs-12'>"
-                                + comments[i].comment + "</div><div class='col-xs-12' style='padding-top:5px;'><i>" + comments[i].date_created +"</i></div></div></div>" + posts
-                        }
-                        res.render('generic',{loops : posts});
+			res.render('generic',{"comment" : comments});
                         });
                 }
         }

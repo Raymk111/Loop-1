@@ -1,3 +1,9 @@
 <body>
-{{{loops}}}
+{{#each comment}}
+<div>
+	<div class='well'><div class='row'><div class='col-xs-12'>
+{{comment}} </div><div class='col-xs-12' style='padding-top:5px;'><i> {{date_created}} </i></div></div></div>
+
+</div>
+{{/each}}
 </body>
