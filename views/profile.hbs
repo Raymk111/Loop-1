@@ -1,33 +1,44 @@
-<body onload = "getName()">
+<body class = "pImg" onload="getProfile(''); getName()">
 <form class="search_form" id="search_user">
-<label for="inputUsername" class="control-label">Search username: </label>
+    <label for="inputUsername" class="control-label"><div class = "fontE"><p>Search username:</p></div> </label>
 <input type="text" class="form-control" id="user_name" placeholder="@Username">
 <button class="btn btn-default">Search</button>
-    
-    <p> </p>
-    <p>Account search: <b id ="out"></b> </p>
+<div class = "fontE"><p>Account search: <b id ="out"></b> </p> </div>
 </form> 
-
 
 <table style="width:70%; margin-top: 5%; margin-left: 20%;">
   <tr>
-    <th>    <img src="/images/face.jpg" width="100" height="100" border="5">    </th>
+    <th>    <img src="/images/face.jpg" id="profPic" width="100" height="100" border="5"></th>
     <th>
         <form id ="bioForm">
             <textarea  id = "inputBio" rows = "4" cols = "50" placeholder="Biography...."></textarea>
-            <button>Save</button>
-            <p> </p>
-            <p style=" padding-top: 10px">bio:<b id="pbio"> </b></p>
+            <button type = "submit" class="btn btn-default">Submit</button>
+            <button type = "reset" class="btn btn-default">reset</button>
         </form> 
-    </th> 
+    </th>
   </tr>
   <tr >
-     <td><p style=" padding-top: 10px">Username:<b id="pname"> </b></p>
+      <td><div class = "fontE" id = "output1">                                                          <p style=" padding-top: 10px"><b id="pname"> </b></p></div>
       </td>
   </tr>
   
   <tr>
       <td>  <button> Message</button>  </td>
   </tr>
+<tr>
+<form id ="picForm">
+            <textarea  id = "inputPic" rows = "1" cols = "4" placeholder="Picture"></textarea>
+            <button type="button" class="btn btn-default" onclick="mup()">Submit</button>
+        </form>
+</tr>
 </table>
 </body>
+<head>
+<script>
+function mup(){
+var decodedJson = {
+    img: document.getElementById('inputPic').value};
+document.getElementById('profPic').src = decodedJson.img;
+}
+</script>
+</head>
