@@ -8,7 +8,12 @@
 
 <table style="width:70%; margin-top: 5%; margin-left: 20%;">
   <tr>
-    <th>    <img src="/images/face.jpg" id="profPic" width="100" height="100" border="5"></th>
+    <th>    <input type="file" id="fileElem" multiple accept="image/*" style="display:none" onchange="handleFiles(this.files)">
+            <a href="#" id="fileSelect">Upload a profile picture</a> 
+            <div id="fileList">
+            <p>No picture selected.</p>
+            </div>    
+            <button id="clear">Clear</button>   </th>
     <th>
         <form id ="bioForm">
             <textarea  id = "inputBio" rows = "4" cols = "50" placeholder="Biography...."></textarea>
@@ -25,20 +30,6 @@
   <tr>
       <td>  <button> Message</button>  </td>
   </tr>
-<tr>
-<form id ="picForm">
-            <textarea  id = "inputPic" rows = "1" cols = "4" placeholder="Picture"></textarea>
-            <button type="button" class="btn btn-default" onclick="mup()">Submit</button>
-        </form>
-</tr>
 </table>
 </body>
-<head>
-<script>
-function mup(){
-var decodedJson = {
-    img: document.getElementById('inputPic').value};
-document.getElementById('profPic').src = decodedJson.img;
-}
-</script>
-</head>
+
