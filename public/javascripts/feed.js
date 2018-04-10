@@ -33,16 +33,17 @@ $("#postForm").submit(function (event) { event.preventDefault(); $.post("/addCom
 function getComments(){
 	$.get( "/getComments", function( data ) {
 		var posts = "";
+		var dNt, date, month, year, secs, mins, hour;
 		for(var i=0; i<data.length; i++) {
-			var dNt = new Date(data[i].date_created);
-			var date = dNt.getDate();
-			var month = (dNt.getMonth()+1);
-			var year = dNt.getFullYear();
-			var secs = dNt.getSeconds();
-			var mins = dNt.getMinutes();
-			var hour = dNt.getHours();
+			dNt = new Date(data[i].date_created);
+			date = dNt.getDate();
+			month = (dNt.getMonth()+1);
+			year = dNt.getFullYear();
+			secs = dNt.getSeconds();
+			mins = dNt.getMinutes();
+			hour = dNt.getHours();
 			posts = "<div class='well'><div class='row col-xs-12'><div class='col-lg-10 col-xs-10'>"
-			+ data[i].comment + "</div>" + "<div class='col-lg-2 col-xs-12'>" +"<button type='button' name='"+data[i]._id+"' class='btn btn-danger'>" +"Delete</button></div>"
+			+ escapeHTML(data[i].comment) + "</div>" + "<div class='col-lg-2 col-xs-12'>" +"<button type='button' name='"+data[i]._id+"' class='btn btn-danger'>" +"Delete</button></div>"
 			+"</div><div class='row'><div class='col-lg-1 col-xs-0'></div><div class='col-lg-11 col-xs-12'><i>" + data[i].user_name + " - " 
 			+data[i].loop + " - " + data[i].college + " - " + hour + ":" + mins + ":" + secs + "    " + date + ":" + month + ":" + year +"</i></div></div></div>" + posts;
  		}
@@ -52,6 +53,15 @@ function getComments(){
 });
 setTimeout(getComments,1000);
 }
+
+function escapeHTML(unsafe) {
+    return unsafe
+         .replace(/&/g, "&amp;")
+         .replace(/</g, "&lt;")
+         .replace(/>/g, "&gt;")
+         .replace(/"/g, "&quot;")
+         .replace(/'/g, "&#039;");
+ }
 
 function getLoopComments(loop){
 	$.get( "/getComments/"+loop, function( feed1 ) {
