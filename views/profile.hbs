@@ -8,12 +8,14 @@
 
 <table style="width:70%; margin-top: 5%; margin-left: 20%;">
   <tr>
-    <th>    <input type="file" id="fileElem" multiple accept="image/*" style="display:none" onchange="handleFiles(this.files)">
-            <a href="#" id="fileSelect">Upload a profile picture</a> 
-            <div id="fileList">
-            <p>No picture selected.</p>
-            </div>    
-            <button id="clear">Clear</button>   </th>
+    <th>   
+
+<form id="form1" >
+  <input type='file' id="imgInp" />	<br/>
+  <img id="blah" src="#" alt="your image" />
+  <button type = "reset" >reset</button>
+</form>
+   </th>
     <th>
         <form id ="bioForm">
             <textarea  id = "inputBio" rows = "4" cols = "50" placeholder="Biography...."></textarea>
@@ -31,5 +33,27 @@
       <td>  <button> Message</button>  </td>
   </tr>
 </table>
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script>
+function readURL(input) {
+
+  if (input.files && input.files[0]) {
+    var reader = new FileReader();
+
+    reader.onload = function(e) {
+      $('#blah').attr('src', e.target.result);
+    }
+
+    reader.readAsDataURL(input.files[0]);
+  }
+}
+
+$("#imgInp").change(function() {
+  readURL(this);
+});
+</script>
+
+
 </body>
 
