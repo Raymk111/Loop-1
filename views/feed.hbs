@@ -56,8 +56,11 @@
                     </select>
                     </div>
                 </div>
-                <div class="col-lg-5 col-xs-12 centered">
-                    <input type="checkbox" id="anonChecker" checked data-toggle="toggle" data-on="Anonymous" data-off="Not Anonymous" data-onstyle="primary" data-offstyle="info" width="30px">
+                <div class="col-lg-5 col-xs-12 centered">  
+                <div class="form-check checkbox-primary-filled">
+                    <input type="checkbox" id="checkbox110" class="filled-in form-check-input" checked>
+                    <label class="form-check-label" for="checkbox110">Warning</label>
+                </div>
                 </div>
                 <div class="col-lg-1 col-xs-12 centered">
                     <button type="text" class="btn btn-primary">Post</button>
@@ -71,19 +74,13 @@
 <div class="row holder">
   <ul class="row nav nav-tabs nav-justified centered">
     <li class="active col-xs-12"><a data-toggle="tab" href="#home">My Posts</a></li>
-    <li class="col-xs-12"><a data-toggle="tab" href="#menu1" onClick="getComments/Basketball">Basketball</a></li>
-    <li class="col-xs-12"><a data-toggle="tab" href="#menu2">US Politics</a></li>
-    <li class="col-xs-12"><a data-toggle="tab" href="#menu3">Weather</a></li>
+    <li class="col-xs-12"><a data-toggle="tab" href="#menu1" onClick="chooseMyLoop("Basketball")">Basketball</a></li>
+    <li class="col-xs-12"><a data-toggle="tab" href="#menu2" onClick="chooseMyLoop("Engineering")">Engineering</a></li>
+    <li class="col-xs-12"><a data-toggle="tab" href="#menu3" onClick="chooseMyLoop("Weather")">Weather</a></li>
   </ul>
 
   <div class="tab-content" style="padding-top:20px">
     <div id="feedPosts" class="col-xs-8 col-xs-offset-2">
-    </div>
-    <div id="menu1" class="tab-pane fade">
-    </div>
-    <div id="menu2" class="tab-pane fade">
-    </div>
-    <div id="menu3" class="tab-pane fade">
     </div>
   </div>
 </div>
