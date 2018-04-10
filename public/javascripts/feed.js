@@ -129,6 +129,9 @@ function getProfile(name)
 			profile += "Username: " +res[0].user_name;
             profile += " <br/> ";
 			profile += "Biography: " +res[0].bio;
+            profile += " <br/> ";
+            profile += "<{img}>";
+			profile += res[0].img;  
 		}
 		else
 		{
@@ -137,11 +140,13 @@ function getProfile(name)
 });
 }
 
-$("#search_user").click(function (event) {
+$("#search_user").submit(function (event) {
 	event.preventDefault();
 	var name = document.getElementById("user_name").value;
-	getProfile(name);
-	$("#out").html(profile);
+    getProfile(name);
+    profile = profile.split("<{img}>");
+    document.getElementById("searchPP").src =  profile[1];
+	$("#out").html(profile[0]);
 });
 
 
@@ -153,7 +158,10 @@ function getName()
        }
    else
     {
-    	document.getElementById("pname").innerHTML =  profile;
+        profile = profile.split("<{img}>");
+        document.getElementById("propic").src =  profile[1];
+        
+    	document.getElementById("pname").innerHTML =  profile[0];
     }
 }
 

@@ -1,42 +1,50 @@
 <body class = "pImg" onload="getProfile(''); getName()">
-<form class="search_form" id="search_user">
+<div class="container">
+    <div class="row">
+    <div class="col-sm-4">
+        
+<form id="search_user">
     <label for="inputUsername" class="control-label"><div class = "fontE"><p>Search username:</p></div> </label>
 <input type="text" class="form-control" id="user_name" placeholder="@Username">
-<button class="btn btn-default">Search</button>
-<div class = "fontE"><p>Account search: <b id ="out"></b> </p> </div>
+<button class="btn btn-primary">Search</button>
+    <div class = "fontE"> <p>Account Search: <b id ="out"> </b></p><img id="searchPP"  width = "160"/></div>
 </form> 
-
-<table style="width:70%; margin-top: 5%; margin-left: 20%;">
-  <tr>
-    <th>   
-
+</div>
+        <div class="col-sm-4"></div>
+        
+    <div class="col-sm-4">
 <form id="form1" >
-  <input type='file' id="imgInp" />	<br/>
-  <img id="ppic" src="images/face.jpg" alt="your image" />
+  <input type='file' id="imgInp" />
+  <img id="ppic"  width = "160" />
     <br/>
-    <button type = "button" id = "profUp" >Upload</button>
     <br/>
-  <button id = "clear" >Reset</button>
+  <button type = "button" id = "profUp" class="btn btn-primary">Upload</button>
+  <button id = "button" class="btn btn-danger">Reset</button>
     
 </form>
-   </th>
-    <th>
+    </div>
+        </div>
+  </div>
+   
+    <div style = "padding-top: 5%" class="container">
+    <div class="row">
+    <div class="col-sm-4">
+     <div class = "fontE" id = "output1"> 
+          <img style=" padding-top: 20px" id="propic"  width = "160" />
+          <p><b id="pname"> </b></p></div>
+    
+        </div>
+    <div class="col-sm-4">
+        
         <form id ="bioForm">
-            <textarea  id = "inputBio" rows = "4" cols = "50" placeholder="Biography...."></textarea>
-            <button type = "submit" class="btn btn-default">Submit</button>
-            <button type = "reset" class="btn btn-default">reset</button>
+            <textarea  class = "sizebox" id = "inputBio"  placeholder="Biography...."></textarea>
+            <button type = "submit" class="btn btn-primary">Submit</button>
+            <button type = "reset" class="btn btn-danger">Clear</button>
         </form> 
-    </th>
-  </tr>
-  <tr >
-      <td><div class = "fontE" id = "output1">                                                          <p style=" padding-top: 10px"><b id="pname"> </b></p></div>
-      </td>
-  </tr>
-  
-  <tr>
-      <td>  <button> Message</button>  </td>
-  </tr>
-</table>
+        
+         </div>
+        </div>
+  </div>
     
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <script>
