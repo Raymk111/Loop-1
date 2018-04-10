@@ -8,12 +8,18 @@
 
 <table style="width:70%; margin-top: 5%; margin-left: 20%;">
   <tr>
-    <th>    <input type="file" id="fileElem" multiple accept="image/*" style="display:none" onchange="handleFiles(this.files)">
-            <a href="#" id="fileSelect">Upload a profile picture</a> 
-            <div id="fileList">
-            <p>No picture selected.</p>
-            </div>    
-            <button id="clear">Clear</button>   </th>
+    <th>   
+
+<form id="form1" >
+  <input type='file' id="imgInp" />	<br/>
+  <img id="ppic" src="images/face.jpg" alt="your image" />
+    <br/>
+    <button type = "button" id = "profUp" >Upload</button>
+    <br/>
+  <button id = "clear" >Reset</button>
+    
+</form>
+   </th>
     <th>
         <form id ="bioForm">
             <textarea  id = "inputBio" rows = "4" cols = "50" placeholder="Biography...."></textarea>
@@ -31,5 +37,35 @@
       <td>  <button> Message</button>  </td>
   </tr>
 </table>
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script>
+function readURL(input) {
+
+  if (input.files && input.files[0]) {
+    var reader = new FileReader();
+
+    reader.onload = function(e) {
+      $('#ppic').attr('src', e.target.result);
+    }
+
+    reader.readAsDataURL(input.files[0]);
+  }
+}
+
+$("#imgInp").change(function() {
+  readURL(this);
+});
+    </script>
+    
+    <script>
+ var control = $("#imgInp");
+
+$("#clear").on("click", function () {
+    control.replaceWith( control = control.clone( true ) );
+});
+</script>
+
+
 </body>
 

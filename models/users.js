@@ -9,7 +9,8 @@ var usersSchema = new Schema({
     password: String,
     fb_id: { type: String, default: null },
     access_token: String,
-    bio: {type: String}
+    bio: {type: String},
+    img: {type: String}
 });
 
 /*
