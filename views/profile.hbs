@@ -12,8 +12,12 @@
 
 <form id="form1" >
   <input type='file' id="imgInp" />	<br/>
-  <img id="blah" src="#" alt="your image" />
-  <button type = "reset" >reset</button>
+  <img id="ppic" src="images/face.jpg" alt="your image" />
+    <br/>
+    <button type = "button" id = "profUp" >Upload</button>
+    <br/>
+  <button id = "clear" >Reset</button>
+    
 </form>
    </th>
     <th>
@@ -42,7 +46,7 @@ function readURL(input) {
     var reader = new FileReader();
 
     reader.onload = function(e) {
-      $('#blah').attr('src', e.target.result);
+      $('#ppic').attr('src', e.target.result);
     }
 
     reader.readAsDataURL(input.files[0]);
@@ -51,6 +55,14 @@ function readURL(input) {
 
 $("#imgInp").change(function() {
   readURL(this);
+});
+    </script>
+    
+    <script>
+ var control = $("#imgInp");
+
+$("#clear").on("click", function () {
+    control.replaceWith( control = control.clone( true ) );
 });
 </script>
 
