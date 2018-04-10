@@ -35,12 +35,16 @@ function getComments(){
 		var posts = "";
 		for(var i=0; i<data.length; i++) {
 			var dNt = new Date(data[i].date_created);
-			date = data[i].date_created.split("T");
-			time = date[1].split(".");
+			var date = dNt.getDate();
+			var month = (dNt.getMonth()+1);
+			var year = dNt.getFullYear();
+			var secs = dNt.getSeconds();
+			var mins = dNt.getMinutes();
+			var hour = dNt.getHours();
 			posts = "<div class='well'><div class='row col-xs-12'><div class='col-lg-10 col-xs-10'>"
 			+ data[i].comment + "</div>" + "<div class='col-lg-2 col-xs-12'>" +"<button type='button' name='"+data[i]._id+"' class='btn btn-danger'>" +"Delete</button></div>"
 			+"</div><div class='row'><div class='col-lg-1 col-xs-0'></div><div class='col-lg-11 col-xs-12'><i>" + data[i].user_name + " - " 
-			+data[i].loop + " - " + data[i].college + " - " + dNt + "</i></div></div></div>" + posts;
+			+data[i].loop + " - " + data[i].college + " - " + hour + ":" + mins + ":" + secs + "    " + date + ":" + month + ":" + year +"</i></div></div></div>" + posts;
  		}
 		$("#feedPosts").html( posts );
 		$("#count").html(data.length);
