@@ -3,6 +3,7 @@ var totalCharacters = 140;
 var profile;
 var bprofile;
 var loop;
+var feedLoop="myPosts";
 var user_name = getCookie("Authorization").split(" ");
 
 
@@ -14,7 +15,7 @@ $(document).ready( function()
       	   var inputText = event.target.value;
       	   $("#charRemaining").html(totalCharacters - inputText.length);
   	});
-  getComments();
+  getMyPosts();
 });
 
 $("#postForm").submit(function (event) { event.preventDefault(); $.post("/addComment", 
@@ -30,11 +31,32 @@ $("#postForm").submit(function (event) { event.preventDefault(); $.post("/addCom
 	getComments();
 	});
 
+function chooseMyLoop(fCall){
+    feedLoop = fCall;
+}
+
+function loopDifferentiator()
+{
+  switch (feedLoop){
+    case 'myPosts':
+      getMyPosts();
+      break;
+    case 'Basketball':
+      getLoopComments(Basketball);
+    case 'Engineering':
+      getLoopComments(Engineering);
+    case 'Weather':
+      getLoopComments(Weather);
+  }
+setTimeout(getComments,1000);
+}
+
 function getComments(){
 	$.get( "/getComments", function( data ) {
 		var posts = "";
 		var dNt, date, month, year, secs, mins, hour;
 		for(var i=0; i<data.length; i++) {
+
 			dNt = new Date(data[i].date_created);
 			date = dNt.getDate();
 			month = (dNt.getMonth()+1);
@@ -42,16 +64,45 @@ function getComments(){
 			secs = dNt.getSeconds();
 			mins = dNt.getMinutes();
 			hour = dNt.getHours();
-			posts = "<div class='well'><div class='row col-xs-12'><div class='col-lg-10 col-xs-10'>"
-			+ escapeHTML(data[i].comment) + "</div>" + "<div class='col-lg-2 col-xs-12'>" +"<button type='button' name='"+data[i]._id+"' class='btn btn-danger'>" +"Delete</button></div>"
-			+"</div><div class='row'><div class='col-lg-1 col-xs-0'></div><div class='col-lg-11 col-xs-12'><i>" + data[i].user_name + " - " 
-			+data[i].loop + " - " + data[i].college + " - " + hour + ":" + mins + ":" + secs + "    " + date + "-" + month + "-" + year +"</i></div></div></div>" + posts;
+      var button = (user_name[0] == data[i].user_name) ? "<button type='button' name='"+data[i]._id+"' class='btn btn-danger'>" +"Delete</button>" : "";
+
+      posts = "<div class='well'><div class='row col-xs-12'><div class='col-lg-10 col-xs-10'>"
+      + escapeHTML(data[i].comment) + "</div>" + "<div class='col-lg-2 col-xs-12'>" 
+      + button
+      +"</div></div><div class='row'><div class='col-lg-1 col-xs-0'></div><div class='col-lg-11 col-xs-12'><i>" + data[i].user_name + " - " 
+      +data[i].loop + " - " + data[i].college + " - " + hour + ":" + mins + ":" + secs + "    " + date + "-" + month + "-" + year +"</i></div></div></div>" + posts;
  		}
-		$("#feedPosts").html( posts );
-		$("#count").html(data.length);
-		$("#feedPosts").show();
+		
 });
-setTimeout(getComments,1000);
+
+}
+
+function getMyPosts(){
+  $.get( "/getMyPosts", function( data ) {
+    var posts = "";
+    var dNt, date, month, year, secs, mins, hour;
+    for(var i=0; i<data.length; i++) {
+
+      dNt = new Date(data[i].date_created);
+      date = dNt.getDate();
+      month = (dNt.getMonth()+1);
+      year = dNt.getFullYear();
+      secs = dNt.getSeconds();
+      mins = dNt.getMinutes();
+      hour = dNt.getHours();
+      var button = (user_name[0] == data[i].user_name) ? "<button type='button' name='"+data[i]._id+"' class='btn btn-danger'>" +"Delete</button>" : "";
+
+      posts = "<div class='well'><div class='row col-xs-12'><div class='col-lg-10 col-xs-10'>"
+      + escapeHTML(data[i].comment) + "</div>" + "<div class='col-lg-2 col-xs-12'>" 
+      + button
+      +"</div></div><div class='row'><div class='col-lg-1 col-xs-0'></div><div class='col-lg-11 col-xs-12'><i>" + data[i].user_name + " - " 
+      +data[i].loop + " - " + data[i].college + " - " + hour + ":" + mins + ":" + secs + "    " + date + "-" + month + "-" + year +"</i></div></div></div>" + posts;
+    }
+    $("#feedPosts").html( posts );
+    $("#count").html(data.length);
+    $("#feedPosts").show();
+});
+
 }
 
 function escapeHTML(unsafe) {
@@ -70,13 +121,13 @@ function getLoopComments(loop){
 			var dNt = new Date(feed1[i].date_created);
 			date = feed1[i].date_created.split("T");
 			time = date[1].split(".");
-			posts = "<div class='well'><div class='row col-xs-12'><div class='col-lg-12 col-xs-12'>"
-			+ feed1[i].comment + "</div>" + 
+			feed1 = "<div class='well'><div class='row col-xs-12'><div class='col-lg-12 col-xs-12'>"
+			+ escapeHTML(data[i].comment) + "</div>" + 
 			+"</div><div class='row'><div class='col-lg-1 col-xs-0'></div><div class='col-lg-11 col-xs-12'><i>" + data[i].user_name + " - " 
-			+feed1[i].loop + " - " + feed1[i].college + " - " + dNt + "</i></div></div></div>" + posts;
+			+feed1[i].loop + " - " + feed1[i].college + " - " + dNt + "</i></div></div></div>" + feed1;
  		}
-		$("#menu1").html( posts );
-		$("#menu1").show();
+		$("#feedPosts").html( posts );
+		$("#feedPosts").show();
 });
 setTimeout(getComments,1000);
 }
