@@ -214,7 +214,6 @@ function getName()
     {
         profile = profile.split("<{img}>");
         document.getElementById("propic").src =  profile[1];
-        
     	document.getElementById("pname").innerHTML =  profile[0];
     }
 }
@@ -256,11 +255,29 @@ jQuery.each( [ "put", "delete" ], function( i, method ) {
   };
 });
 
-$("#profUp").click(function (event) { event.preventDefault(); $.post("/addUserPic", 
+$("#profUp").click(function (event) {
+	event.preventDefault();
+	var imageNew = "";
+	resizeBase64Img(document.getElementById("ppic").src, 200, 200).then(function(newImg){
+	$.post("/addUserPic",
 	{
-		img: document.getElementById("ppic").src
+		img: newImg[0].src
 	},  function (result) {
-           
+		window.alert(result.status);
 	});
-	
 	});
+});
+
+function resizeBase64Img(base64, width, height) {
+    var canvas = document.createElement("canvas");
+    canvas.width = width;
+    canvas.height = height;
+    var context = canvas.getContext("2d");
+    var deferred = $.Deferred();
+    $("<img/>").attr("src", base64).load(function() {
+        context.scale(width/this.width,  height/this.height);
+        context.drawImage(this, 0, 0); 
+        deferred.resolve($("<img/>").attr("src", canvas.toDataURL()));
+     });
+     return deferred.promise();
+}
