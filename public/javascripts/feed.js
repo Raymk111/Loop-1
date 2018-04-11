@@ -1,21 +1,18 @@
-var showPosts = false;
+
 var totalCharacters = 140;
 var profile;
 var bprofile;
-var loop;
-var feedLoop="myPosts";
+var feedLoop = "myPosts";
 var user_name = getCookie("Authorization").split(" ");
-
 
 $(document).ready( function()
 {
 	getBreaking();
-  $("#postForm").keyup(function (event)
-	{
+  $("#postForm").keyup(function(event){
       	   var inputText = event.target.value;
       	   $("#charRemaining").html(totalCharacters - inputText.length);
   	});
-  getMyPosts();
+  loopDifferentiator();
 });
 
 $("#postForm").submit(function (event) { event.preventDefault(); $.post("/addComment", 
@@ -42,13 +39,16 @@ function loopDifferentiator()
       getMyPosts();
       break;
     case 'Basketball':
-      getLoopComments(Basketball);
+      getLoopComments("Basketball");
+      break;
     case 'Engineering':
-      getLoopComments(Engineering);
+      getLoopComments("Engineering");
+      break;
     case 'Weather':
-      getLoopComments(Weather);
+      getLoopComments("Weather");
+      break;
   }
-setTimeout(getComments,1000);
+setTimeout(loopDifferentiator,1000);
 }
 
 function getComments(){
@@ -72,7 +72,6 @@ function getComments(){
       +"</div></div><div class='row'><div class='col-lg-1 col-xs-0'></div><div class='col-lg-11 col-xs-12'><i>" + data[i].user_name + " - " 
       +data[i].loop + " - " + data[i].college + " - " + hour + ":" + mins + ":" + secs + "    " + date + "-" + month + "-" + year +"</i></div></div></div>" + posts;
  		}
-		
 });
 
 }
@@ -115,21 +114,25 @@ function escapeHTML(unsafe) {
  }
 
 function getLoopComments(loop){
-	$.get( "/getComments/"+loop, function( feed1 ) {
-		var feed1 = "";
+	$.get( "/getComments/"+loop, function( data ) {
+		var posts = "";
+		var dNt, date, month, year, secs, mins, hour;
 		for(var i=0; i<data.length; i++) {
-			var dNt = new Date(feed1[i].date_created);
-			date = feed1[i].date_created.split("T");
-			time = date[1].split(".");
-			feed1 = "<div class='well'><div class='row col-xs-12'><div class='col-lg-12 col-xs-12'>"
-			+ escapeHTML(data[i].comment) + "</div>" + 
-			+"</div><div class='row'><div class='col-lg-1 col-xs-0'></div><div class='col-lg-11 col-xs-12'><i>" + data[i].user_name + " - " 
-			+feed1[i].loop + " - " + feed1[i].college + " - " + dNt + "</i></div></div></div>" + feed1;
- 		}
+
+			dNt = new Date(data[i].date_created);
+			date = dNt.getDate();
+			month = (dNt.getMonth()+1);
+			year = dNt.getFullYear();
+			secs = dNt.getSeconds();
+			mins = dNt.getMinutes();
+			hour = dNt.getHours();
+            var button = (user_name[0] == data[i].user_name) ? "<button type='button' name='"+data[i]._id+"' class='btn btn-danger'>" +"Delete</button>" : "";
+            posts = "<div class='well'><div class='row col-xs-12'><div class='col-lg-10 col-xs-10'>"
+                + escapeHTML(data[i].comment) + "</div>" + "<div class='col-lg-2 col-xs-12'>" + button + "</div></div><div class='row'><div class='col-lg-1 col-xs-0'></div><div class='col-lg-11 col-xs-12'><i>" + data[i].user_name + " - " + data[i].loop + " - " + data[i].college + " - " + hour + ":" + mins + ":" + secs + "    " + date + "-" + month + "-" + year +"</i></div></div></div>" + posts;
+        }
 		$("#feedPosts").html( posts );
 		$("#feedPosts").show();
 });
-setTimeout(getComments,1000);
 }
 
 $("#feedPosts").click(function (event) {
