@@ -4,6 +4,7 @@ var Comment = require('../models/comments');
 var jwt = require('jsonwebtoken');
 var User = require('../models/users');
 var moment = require('moment-timezone');
+var xssEscape = require('xss-escape');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -130,6 +131,12 @@ router.get('/getComments', function(req, res, next) {
         	if (err)
             		res.send(err);
         	comments.sort(mysort);
+		var i = 0;
+		while(i<comments.length)
+		{
+			comments[i].token = null;
+			i++;
+		}
         	res.json(comments);
     		});
             }
@@ -247,7 +254,8 @@ router.get('/chooseCollege/:college', function(req, res, next) {
 });
 
 router.get('/getUser/:user_name', function(req, res, next) {
-    var jwtString = req.cookies.Authorization;
+            try{
+                    var jwtString = req.cookies.Authorization;
     var profile = verifyJwt(jwtString);
     jwtString = jwtString.split(" ");
     var username = jwtString[0];
@@ -257,12 +265,17 @@ router.get('/getUser/:user_name', function(req, res, next) {
 	User.find({user_name:name}, function (err, users) {
         if (err)
             res.send(err);
+	users.access_token = null;
         res.json(users);
     });
     }
-    else{
+	    else{
                         res.render('error', {message : "Oops. something went wrong with your authentication"});
                 }
+        }
+        catch(err){
+                res.render('error', {message : "You are not logged in."});
+        }
 });
 
 router.put('/editUserBio', function(req, res, next){
@@ -270,9 +283,11 @@ router.put('/editUserBio', function(req, res, next){
     var profile = verifyJwt(jwtString);
     jwtString = jwtString.split(" ");
     var username = jwtString[0];
+    var bioFor = xssEscape(req.body.bio);
+    console.log(bioFor);
     if(profile)
     {
-         User.update({user_name:username}, req.body, function (err) {
+         User.update({user_name:username}, {bio: bioFor}, function (err) {
         if (err)
             res.send(err);
 
@@ -280,27 +295,34 @@ router.put('/editUserBio', function(req, res, next){
     });
     }
     else{
-                        res.render('error', {message : "Oops. something went wrong with your authentication"});
+                        res.json({status : "Oops. something went wrong with your authentication"});
                 }
 });
 
 router.post('/addUserPic', function(req, res, next){
-    var jwtString = req.cookies.Authorization.split(" ");
-    var profile = verifyJwt(jwtString[1]);
-    var username = jwtString[0];
-    if(profile)
-    {
-         User.update({user_name:username}, req.body, function (err) {
-        if (err)
-            res.send(err);
-
-        res.json({status : "Successfully added pic"});
-    });
+    try{
+        var jwtString = req.cookies.Authorization;
+        var profile = verifyJwt(jwtString);
+	jwtString = jwtString.split(" ");
+        var username = jwtString[0];
+        if(profile)
+        {
+            User.update({user_name:username}, req.body, function (err){
+                if (err)
+                    res.send(err);
+                res.json({status : "Successfully added pic"});
+            });
+        }
+        else{
+            res.json({status : "Oops. something went wrong with your authentication"});
+        }
     }
-    else{
-                        res.render('error', {message : "Oops. something went wrong with your authentication"});
-                }
+    catch(err){
+	console.log(err);
+        res.json({status : err});
+    }
 });
+
 
 /**
  * Deletes a comment from the database
