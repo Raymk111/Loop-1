@@ -161,6 +161,12 @@ router.get('/getMyPosts', function(req, res, next) {
 			    if (err)
 				res.send(err);
         		comments.sort(mysort);
+			var i = 0;
+                	while(i<comments.length)
+                	{
+                	        comments[i].token = null;
+                	        i++;
+                	}
 			res.json(comments);
 			});
             	}
@@ -185,7 +191,13 @@ router.get('/getComments/:loop', function(req, res, next) {
         			if (err)
         			    res.send(err);
 		        	comments.sort(mysort);
-		        	res.json(comments);
+		        	var i = 0;
+                		while(i<comments.length)
+                		{
+                        		comments[i].token = null;
+                        		i++;
+                		}
+				res.json(comments);
 				});
             }
 	    else{
@@ -265,7 +277,7 @@ router.get('/getUser/:user_name', function(req, res, next) {
 	User.find({user_name:name}, function (err, users) {
         if (err)
             res.send(err);
-	users.access_token = null;
+	users[0].access_token = null;
         res.json(users);
     });
     }
