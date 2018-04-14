@@ -232,7 +232,9 @@ function getBreaking(){
 	});
 }
 
-$("#bioForm").submit(function (event) { event.preventDefault(); $.put("/editUserBio", {
+$("#bioForm").submit(function (event) {
+	event.preventDefault();
+	$.put("/editUserBio", {
    bio: event.target.inputBio.value },  function (result) {} );
 	$("#outb").html(bprofile);
 });
@@ -258,7 +260,7 @@ jQuery.each( [ "put", "delete" ], function( i, method ) {
 $("#profUp").click(function (event) {
 	event.preventDefault();
 	var imageNew = "";
-	resizeBase64Img(document.getElementById("ppic").src, 200, 200).then(function(newImg){
+	resizeBase64Img(document.getElementById("ppic").src, 150, 150).then(function(newImg){
 	$.post("/addUserPic",
 	{
 		img: newImg[0].src
