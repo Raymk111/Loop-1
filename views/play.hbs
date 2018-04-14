@@ -5,7 +5,7 @@
         
 <header>
       <div class ="push50 centered">
-        <h3>Welcome to the <strong class="color:blackS">Loop</strong> Live Chatroom</h3>
+        <h3>Welcome to the <strong class="color:black">Loop</strong> Live Chatroom</h3>
         <h4>Here you can chat with fellow users about the latest hot-button topics</h4>
       </div>
 </header>
@@ -14,10 +14,13 @@
       <section id="feedback" class="messages"></section>
     </section>
 
-    <section id="input_zone"> 
-      <input id="message" class="vertical-align" type="text" />
-      <button id="send_message" class="vertical-align" type="button">Send</button>
+    <div style="padding-bottom:60px"></div>
+
+    <section id="input_zone" class="inputZone"> 
+      <input id="message"  type="text"/>
+      <button id="send_message" type="button">Send</button>
     </section>
+
 
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
     <script src="javascripts/socket.js"></script>
