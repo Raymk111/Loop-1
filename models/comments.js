@@ -12,7 +12,8 @@ var commentsSchema = new Schema({
     college: {type: String},
     location: {type: String},
     token: {type: String},
-    voted: {type: String, default: ""}
+    voted: {type: String, default: ""},
+    anon: {type: Boolean, default: false}
 });
 
 module.exports = mongoose.model('Comment', commentsSchema);

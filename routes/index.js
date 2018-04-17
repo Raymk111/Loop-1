@@ -135,6 +135,10 @@ router.get('/getComments', function(req, res, next) {
 		while(i<comments.length)
 		{
 			comments[i].token = null;
+			if(comments[i].anon)
+			{
+				comments[i].user_name = "";
+			}
 			i++;
 		}
         	res.json(comments);
@@ -165,6 +169,10 @@ router.get('/getMyPosts', function(req, res, next) {
                 	while(i<comments.length)
                 	{
                 	        comments[i].token = null;
+                        	if(comments[i].anon)
+                        	{
+                        	        comments[i].user_name = "";
+                        	}
                 	        i++;
                 	}
 			res.json(comments);
@@ -194,8 +202,12 @@ router.get('/getComments/:loop', function(req, res, next) {
 		        	var i = 0;
                 		while(i<comments.length)
                 		{
-                        		comments[i].token = null;
-                        		i++;
+                        		comments[i].token = "";
+                       	                if(comments[i].anon)
+                        		{
+                                		comments[i].user_name = "";
+                        		}
+					i++;
                 		}
 				res.json(comments);
 				});
@@ -225,6 +237,15 @@ router.get('/chooseLoop/:loop', function(req, res, next) {
         		   res.send(err);
         		}
         		comments.sort(mysort);
+			while(i<comments.length)
+                        {
+                                comments[i].token = null;
+                                if(comments[i].anon)
+                                {
+                                        comments[i].user_name = "";
+                                }
+                                i++;
+                        }
         		res.render('generic',{"comment" : comments});
         		});
                 }
@@ -253,6 +274,15 @@ router.get('/chooseCollege/:college', function(req, res, next) {
                            res.send(err);
                         }
 		        comments.sort(mysort);
+                        while(i<comments.length)
+                        {
+                                comments[i].token = null;
+                                if(comments[i].anon)
+                                {
+                                        comments[i].user_name = "";
+                                }
+                                i++;
+                        }
 			res.render('generic',{"comment" : comments});
                         });
                 }
@@ -377,7 +407,7 @@ router.put('/vote/:id', function(req, res, next){
                			 if(comment[0].voted.indexOf(user_name) >= 0)
                			 {
                 		        res.send({status : "already voted"});
-                		}
+                		 }
                			 else
                			 {
                 			        comment[0].up_votes = comment[0].up_votes + req.body.vote;
