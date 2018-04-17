@@ -2,7 +2,7 @@
 {{#each comment}}
 <div>
 	<div class='well'><div class='row'><div class='col-xs-9'>
-{{comment}} </div><div class='col-xs-3'><i name='{{_id}}' id='up' class="fa fa-angle-up" style="font-size:24px"></i></div><div class='col-xs-9' style='padding-top:5px;'><i> {{user_name}} - {{date_created}} </i></div><div class='col-xs-3'><i id='down' class="fa fa-angle-down" style="font-size:24px"></i></div></div></div>
+{{comment}} </div><div class='col-xs-2'><i onclick="voteUp('{{_id}}')" class="fa fa-angle-up" style="font-size:24px"></i></div><div class='col-xs-1'>{{up_votes}}</div><div class='col-xs-9' style='padding-top:5px;'><i> {{user_name}} - {{date_created}} </i></div><div class='col-xs-3'><i onclick="voteDown('{{_id}}')" class="fa fa-angle-down" style="font-size:24px"></i></div></div></div>
 
 </div>
 {{/each}}

@@ -395,7 +395,6 @@ module.exports = router;
 
 router.put('/vote/:id', function(req, res, next){
 	var id = req.params.id;
-	console.log(id);
 	var jwtString = req.cookies.Authorization;
 	try{
                 var profile = verifyJwt(jwtString);

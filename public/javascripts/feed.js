@@ -293,8 +293,8 @@ function resizeBase64Img(base64, width, height) {
      return deferred.promise();
 }
 
-$("#up").click(function (event){
-        $.put("/vote/"+event.toElement.attributes[0].nodeValue, {
+function voteUp(id){
+        $.put("/vote/"+id, {
         "vote": 1 },  function (result) {console.log(result)} );
 
-      });
+      }
