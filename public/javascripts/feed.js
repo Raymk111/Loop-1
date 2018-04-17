@@ -18,7 +18,7 @@ $(document).ready( function()
   loopDifferentiator();
 });
 
-$("#postForm").submit(function (event) { event.preventDefault(); $.post("/addComment", 
+$("#postForm").submit(function (event) { event.preventDefault(); $.post("/addComment",
 	{
 		comment: event.target.inputPost.value,
 		loop: event.target.loopSelect.value,
@@ -294,8 +294,7 @@ function resizeBase64Img(base64, width, height) {
 }
 
 $("#up").click(function (event){
-        
-        $.put("/vote/"+event.target.name, {
-        vote: 1 },  function (result) {} );
+        $.put("/vote/"+event.toElement.attributes[0].nodeValue, {
+        "vote": 1 },  function (result) {console.log(result)} );
 
       });
