@@ -4,6 +4,7 @@ var profile;
 var bprofile;
 var feedLoop = "myPosts";
 var user_name = getCookie("Authorization").split(" ");
+var anony = false;
 
 $(document).ready( function()
 {
@@ -12,6 +13,7 @@ $(document).ready( function()
       	   var inputText = event.target.value;
       	   $("#charRemaining").html(totalCharacters - inputText.length);
   	});
+
   loopDifferentiator();
 });
 
@@ -22,11 +24,17 @@ $("#postForm").submit(function (event) { event.preventDefault(); $.post("/addCom
 		college: event.target.collegeSelect.value,
 		token: getCookie("Authorization"),
 		user_name: user_name[0],
+    anon: anony
 	},  function (result) {
 		$("#charRemaining").html(totalCharacters); event.target.reset();
 	});
 	getComments();
 	});
+
+$("#anon").click(function(){
+        document.getElementById("anon").innerHTML = "Not Anon";
+	      anony = !anony;
+    });
 
 function chooseMyLoop(fCall){
     feedLoop = fCall;
@@ -91,10 +99,10 @@ function getMyPosts(){
       hour = dNt.getHours();
       var button = (user_name[0] == data[i].user_name) ? "<button type='button' name='"+data[i]._id+"' class='btn btn-danger'>" +"Delete</button>" : "";
 
-      posts = "<div class='well'><div class='row col-xs-12'><div class='col-lg-10 col-xs-10'>"
-      + escapeHTML(data[i].comment) + "</div>" + "<div class='col-lg-2 col-xs-12'>" 
+      posts = "<div class='well'><div class='row col-xs-12'><div class='col-lg-10 col-xs-10 col-md-10 col-sm-10'>"
+      + escapeHTML(data[i].comment) + "</div>" + "<div class='col-lg-2 col-xs-12 col-md-2 col-sm-2'>" 
       + button
-      +"</div></div><div class='row'><div class='col-lg-1 col-xs-0'></div><div class='col-lg-11 col-xs-12'><i>" + data[i].user_name + " - " 
+      +"</div></div><div class='row'><div class='col-lg-1 col-xs-0'></div><div class='col-lg-11 col-xs-12'><i>" + data[i].user_name + " - "  
       +data[i].loop + " - " + data[i].college + " - " + hour + ":" + mins + ":" + secs + "    " + date + "-" + month + "-" + year +"</i></div></div></div>" + posts;
     }
     $("#feedPosts").html( posts );
@@ -128,7 +136,7 @@ function getLoopComments(loop){
 			hour = dNt.getHours();
             var button = (user_name[0] == data[i].user_name) ? "<button type='button' name='"+data[i]._id+"' class='btn btn-danger'>" +"Delete</button>" : "";
             posts = "<div class='well'><div class='row col-xs-12'><div class='col-lg-10 col-xs-10'>"
-                + escapeHTML(data[i].comment) + "</div>" + "<div class='col-lg-2 col-xs-12'>" + button + "</div></div><div class='row'><div class='col-lg-1 col-xs-0'></div><div class='col-lg-11 col-xs-12'><i>" + data[i].user_name + " - " + data[i].loop + " - " + data[i].college + " - " + hour + ":" + mins + ":" + secs + "    " + date + "-" + month + "-" + year +"</i></div></div></div>" + posts;
+                + escapeHTML(data[i].comment) + "</div>" + "<div class='col-lg-2 col-xs-12'>" + button + "</div></div><div class='row'><div class='col-lg-1 col-xs-0'></div><div class='col-lg-11 col-xs-12'><i>" + data[i].user_name + data[i].loop + " - " + data[i].college + " - " + hour + ":" + mins + ":" + secs + "    " + date + "-" + month + "-" + year +"</i></div></div></div>" + posts;
         }
 		$("#feedPosts").html( posts );
 		$("#feedPosts").show();

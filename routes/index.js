@@ -237,6 +237,7 @@ router.get('/chooseLoop/:loop', function(req, res, next) {
         		   res.send(err);
         		}
         		comments.sort(mysort);
+			var i = 0;
 			while(i<comments.length)
                         {
                                 comments[i].token = null;
@@ -274,6 +275,7 @@ router.get('/chooseCollege/:college', function(req, res, next) {
                            res.send(err);
                         }
 		        comments.sort(mysort);
+			var i = 0;
                         while(i<comments.length)
                         {
                                 comments[i].token = null;

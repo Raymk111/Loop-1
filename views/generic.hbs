@@ -1,8 +1,8 @@
 <body>
 {{#each comment}}
 <div>
-	<div class='well'><div class='row'><div class='col-xs-12'>
-{{comment}} </div><div class='col-xs-12' style='padding-top:5px;'><i> {{date_created}} </i></div></div></div>
+	<div class='well'><div class='row'><div class='col-xs-9'>
+{{comment}} </div><div class='col-xs-3'><i class="fa fa-angle-up" style="font-size:24px"></i></div><div class='col-xs-9' style='padding-top:5px;'><i> {{user_name}}{{date_created}} </i></div><div class='col-xs-3'><i class="fa fa-angle-down" style="font-size:24px"></i></div></div></div>
 
 </div>
 {{/each}}
