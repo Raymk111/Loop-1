@@ -4,7 +4,8 @@ var profile;
 var bprofile;
 var feedLoop = "myPosts";
 var user_name = getCookie("Authorization").split(" ");
-var anony = false;
+var anony = true;
+var voteTally;
 
 $(document).ready( function()
 {
@@ -24,7 +25,7 @@ $("#postForm").submit(function (event) { event.preventDefault(); $.post("/addCom
 		college: event.target.collegeSelect.value,
 		token: getCookie("Authorization"),
 		user_name: user_name[0],
-    anon: anony
+    anon: anony,
 	},  function (result) {
 		$("#charRemaining").html(totalCharacters); event.target.reset();
 	});
@@ -291,3 +292,10 @@ function resizeBase64Img(base64, width, height) {
      });
      return deferred.promise();
 }
+
+$("#up").click(function (event){
+        
+        $.put("/vote/"+event.target.name, {
+        vote: 1 },  function (result) {} );
+
+      });
