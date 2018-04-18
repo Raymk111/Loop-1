@@ -73,12 +73,13 @@ ul {
 
 .chatArea {
   background-color: white;
-  height: 100%;
-  padding-left: 10%;
+  padding-left: 5%;
+  word-wrap: break-word;
 }
 
 .messages {
   height: 100%;
+  color: white;
 }
 
 .message.typing .messageBody {
@@ -108,7 +109,15 @@ ul {
 
 .inputZone {
     position: fixed;
-    bottom: 10px;
+    bottom: 0;
+    padding-top: -10px;
+    width: 100%;
+    background-color: black;
 }
+
+.pushButton {
+    font-size: 32px;
+}
+
 
 

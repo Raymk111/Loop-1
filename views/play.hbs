@@ -3,22 +3,24 @@
 <meta http-equiv="Content-Type" const="text/html;charset=UTF-8" />
     <link href="http://fonts.googleapis.com/css?family=Comfortaa" rel="stylesheet" type="text/css">
         
-<header style="background-color: black">
-      <div class ="push50 centered" style="color: white">
-        <h3>Welcome to the Loop Live Chatroom</h3>
-        <h4>Here you can chat with fellow users about the latest hot-button topics</h4>
-        <br>
+<header class="fixed" style="background-color: black">
+      <div class ="push50 centered">
+        <h3 style="color: white">Welcome to the Loop Live Chatroom</h3>
+        <h4 style="color: white">Here you can chat with fellow users about the latest hot-button topics</h4>
+        <h6 style="color: white">Scroll down to see the newest posts</h6>
+        <section id="feedback" class="messages"></section>
       </div>
 </header>
 
-    <section id="chatroom" class="chatArea">
+    <section id="chatroom" class="chatArea col-xs-10">
     </section>
 
-    <div style="padding-bottom:60px"></div>
+    <div style="padding-bottom:100px"></div>
 
-    <section id="input_zone" class="inputZone"> 
-      <input id="message"  type="text"/>
-      <button id="send_message" type="button">Send</button>
+    <section id="input_zone" class="inputZone">
+      <input id="message"  class="btn-primary col-xs-9" type="text"/>
+      <div class="col-xs-1"></div>
+      <button id="send_message" class="col-xs-2 pushButton btn btn-primary" type="button">Send</button>
     </section>
 
 
