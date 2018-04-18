@@ -73,13 +73,12 @@ ul {
 
 .chatArea {
   background-color: white;
-  height: 100%
+  height: 100%;
+  padding-left: 10%;
 }
 
 .messages {
   height: 100%;
-  margin: 0;
-  padding: 10px 20px 10px 20px;
 }
 
 .message.typing .messageBody {
@@ -111,3 +110,5 @@ ul {
     position: fixed;
     bottom: 10px;
 }
+
+
