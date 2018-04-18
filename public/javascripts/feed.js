@@ -87,6 +87,10 @@ function getComments(){
 
 function getMyPosts(){
   $.get( "/getMyPosts", function( data ) {
+	if(typeof data[0].comment == 'undefined')
+	{
+		return;
+	}
     var posts = "";
     var dNt, date, month, year, secs, mins, hour;
     for(var i=0; i<data.length; i++) {
