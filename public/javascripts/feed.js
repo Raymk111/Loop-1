@@ -87,8 +87,18 @@ function getComments(){
 
 function getMyPosts(){
   $.get( "/getMyPosts", function( data ) {
+	if(typeof data[0] == 'undefined')
+	{
+		var posts = "No Comments";
+		$("#feedPosts").html( posts );
+		$("#feedPosts").show();
+		return;
+	}
 	if(typeof data[0].comment == 'undefined')
 	{
+                var posts = "No Comments";
+                $("#feedPosts").html( posts );
+                $("#feedPosts").show();
 		return;
 	}
     var posts = "";
