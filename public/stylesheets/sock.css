@@ -119,5 +119,9 @@ ul {
     font-size: 32px;
 }
 
+::placeholder {
+  color: black;
+}
+
 
 
