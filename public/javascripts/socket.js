@@ -1,6 +1,6 @@
 $(function(){
    	//make connection
-	var socket = io.connect('https://danu7.it.nuigalway.ie:8633')
+	var socket = io.connect('https://danu7.it.nuigalway.ie:8648')
 
 	//buttons and inputs
 	var message = $("#message")
@@ -21,7 +21,8 @@ $(function(){
 	socket.on("new_message", (data) => {
 		feedback.html('');
 		message.val('');
-		chatroom.append("<p class='message'><b>" + data.username  + "</b>: " + data.message + "</p>")
+		chatroom.append("<p class='message'><b>" + data.username  + "</b>: " + data.message + "</p>");
+		notifyMe();
 	})
 
 	//Emit typing
@@ -34,4 +35,31 @@ $(function(){
 		feedback.html("<p><i>" + data.username + " is typing a message..." + "</i></p>")
 	})
 });
+
+document.addEventListener('DOMContentLoaded', function () {
+  if (!Notification) {
+    alert('Desktop notifications not available in your browser. Try Chromium.');
+    return;
+  }
+
+  if (Notification.permission !== "granted")
+    Notification.requestPermission();
+});
+
+function notifyMe() {
+  if (Notification.permission !== "granted")
+    Notification.requestPermission();
+  else {
+    var notification = new Notification('Loop', {
+      icon: "images/face.jpg",
+      body: "New message",
+    });
+
+    notification.onclick = function () {
+      window.open("/play");
+    };
+
+  }
+
+}
 
