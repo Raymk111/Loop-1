@@ -22,7 +22,7 @@ $(function(){
 		feedback.html('');
 		message.val('');
 		chatroom.append("<p class='message'><b>" + data.username  + "</b>: " + data.message + "</p>");
-		notifyMe();
+		onclick = notifyMe(data.username);
 	})
 
 	//Emit typing
@@ -46,13 +46,14 @@ document.addEventListener('DOMContentLoaded', function () {
     Notification.requestPermission();
 });
 
-function notifyMe() {
+function notifyMe(uName) {
   if (Notification.permission !== "granted")
     Notification.requestPermission();
   else {
+      uName = uName + " is in the chat.";
     var notification = new Notification('Loop', {
       icon: "images/face.jpg",
-      body: "New message",
+      body: uName,
     });
 
     notification.onclick = function () {
