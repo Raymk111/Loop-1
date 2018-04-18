@@ -98,6 +98,8 @@ router.post('/addComment', function(req, res, next) {
                 if(profile){
 			comment = new Comment(req.body);
 			comment.date_created = moment().tz("Europe/Dublin").format();
+			comment.comment = xssEscape(comment.comment);
+			console.log(comment.comment);
 			comment.save(function (err, savedComment) {
         		if (err)
             			throw err;
