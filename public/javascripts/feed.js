@@ -113,11 +113,11 @@ function getMyPosts(){
       mins = dNt.getMinutes();
       hour = dNt.getHours();
       var button = (user_name[0] == data[i].user_name) ? "<button type='button' name='"+data[i]._id+"' class='btn btn-danger'>" +"Delete</button>" : "";
-
+      var check = (data[i].user_name == "") ? "" : " - ";
       posts = "<div class='well'><div class='row col-xs-12'><div class='col-lg-10 col-xs-10 col-md-10 col-sm-10'>"
       + escapeHTML(data[i].comment) + "</div>" + "<div class='col-lg-2 col-xs-12 col-md-2 col-sm-2'>" 
       + button
-      +"</div></div><div class='row'><div class='col-lg-1 col-xs-0'></div><div class='col-lg-11 col-xs-12'><i>" + data[i].user_name + " - "  
+      +"</div></div><div class='row'><div class='col-lg-1 col-xs-0'></div><div class='col-lg-11 col-xs-12'><i>" + data[i].user_name + check  
       +data[i].loop + " - " + data[i].college + " - " + hour + ":" + mins + ":" + secs + "    " + date + "-" + month + "-" + year +"</i></div></div></div>" + posts;
     }
     $("#feedPosts").html( posts );
