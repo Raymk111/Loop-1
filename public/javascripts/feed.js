@@ -114,8 +114,8 @@ function getMyPosts(){
       hour = dNt.getHours();
       var button = (user_name[0] == data[i].user_name) ? "<button type='button' name='"+data[i]._id+"' class='btn btn-danger'>" +"Delete</button>" : "";
       var check = (data[i].user_name == "") ? "" : " - ";
-      posts = "<div class='well'><div class='row col-xs-12'><div class='col-lg-10 col-xs-10 col-md-10 col-sm-10'>"
-      + escapeHTML(data[i].comment) + "</div>" + "<div class='col-lg-2 col-xs-12 col-md-2 col-sm-2'>" 
+      posts = "<div class='well'><div class='row col-xs-12'><div class='col-lg-9 col-xs-9 col-md-9 col-sm-10'>"
+      + escapeHTML(data[i].comment) + "</div>" + "<div class='col-lg-3 col-xs-3 col-md-3 col-sm-3'>" 
       + button
       +"</div></div><div class='row'><div class='col-lg-1 col-xs-0'></div><div class='col-lg-11 col-xs-12'><i>" + data[i].user_name + check  
       +data[i].loop + " - " + data[i].college + " - " + hour + ":" + mins + ":" + secs + "    " + date + "-" + month + "-" + year +"</i></div></div></div>" + posts;
@@ -151,7 +151,7 @@ function getLoopComments(loop){
 			hour = dNt.getHours();
             var button = (user_name[0] == data[i].user_name) ? "<button type='button' name='"+data[i]._id+"' class='btn btn-danger'>" +"Delete</button>" : "";
             posts = "<div class='well'><div class='row col-xs-12'><div class='col-lg-10 col-xs-10'>"
-                + escapeHTML(data[i].comment) + "</div>" + "<div class='col-lg-2 col-xs-12'>" + button + "</div></div><div class='row'><div class='col-lg-1 col-xs-0'></div><div class='col-lg-11 col-xs-12'><i>" + data[i].user_name + data[i].loop + " - " + data[i].college + " - " + hour + ":" + mins + ":" + secs + "    " + date + "-" + month + "-" + year +"</i></div></div></div>" + posts;
+                + escapeHTML(data[i].comment) + "</div>" + "<div class='col-lg-2 col-xs-12'>" + button + "</div></div><div class='row'><div class='col-lg-1 col-xs-0'></div><div class='col-lg-11 col-xs-12'><i>" + data[i].user_name +  " - " + data[i].loop + " - " + data[i].college + " - " + hour + ":" + mins + ":" + secs + "    " + date + "-" + month + "-" + year +"</i></div></div></div>" + posts;
         }
 		$("#feedPosts").html( posts );
 		$("#feedPosts").show();
