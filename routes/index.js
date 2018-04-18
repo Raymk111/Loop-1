@@ -311,7 +311,11 @@ router.get('/getUser/:user_name', function(req, res, next) {
 	User.find({user_name:name}, function (err, users) {
         if (err)
             res.send(err);
-	users[0].access_token = null;
+	console.log(typeof users);
+	if(users.length > 0)
+    	{
+    	    users[0].access_token = null;
+    	}
         res.json(users);
     });
     }
