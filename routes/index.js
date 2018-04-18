@@ -412,7 +412,10 @@ router.put('/vote/:id', function(req, res, next){
                 		 }
                			 else
                			 {
-                			        comment[0].up_votes = comment[0].up_votes + req.body.vote;
+						console.log("mup");
+						console.log(req.body.vote);
+                			        comment[0].up_votes = parseInt(comment[0].up_votes) + parseInt(req.body.vote);
+						console.log(comment[0].up_votes);
                 			        comment[0].voted += " " + user_name;
                 			        Comment.update({_id:id}, {voted : comment[0].voted, up_votes : comment[0].up_votes}, function(err){if(err){res.send(err)}})
                 			        res.send({status:"Up - Voted"});
