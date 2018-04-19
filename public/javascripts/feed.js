@@ -33,8 +33,13 @@ $("#postForm").submit(function (event) { event.preventDefault(); $.post("/addCom
 	});
 
 $("#anon").click(function(){
-        document.getElementById("anon").innerHTML = "Not Anon";
 	      anony = !anony;
+        if (anony == true){
+          document.getElementById("anon").innerHTML = "Anonymous";
+        }
+        else{
+          document.getElementById("anon").innerHTML = "Not Anonymous";
+        }
     });
 
 function chooseMyLoop(fCall){
