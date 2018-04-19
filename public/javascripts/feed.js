@@ -305,12 +305,12 @@ function resizeBase64Img(base64, width, height) {
 
 function voteUp(id){
         $.put("/vote/"+id, {
-        vote: 1 },  function (result) {console.log(result)} );
+        vote: 1 },  function (result) {alert(result.status)} );
 
       }
 
 function voteDown(id){
         $.put("/vote/"+id, {
-        vote: -1 },  function (result) {console.log(result)} );
+        vote: -1 },  function (result) {alert(result.status)} );
 
       }

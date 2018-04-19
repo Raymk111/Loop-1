@@ -227,7 +227,7 @@ router.get('/chooseLoop/:loop', function(req, res, next) {
 
     var loop = req.params.loop;
     var posts = "";
-    var mysort = {date_created : 1};
+    var mysort = {date_created : -1};
 	try{
                 var jwtString = req.cookies.Authorization;
                 var profile = verifyJwt(jwtString);
@@ -265,7 +265,7 @@ router.get('/chooseCollege/:college', function(req, res, next) {
 
     var college = req.params.college;
     var posts = "";
-    var mysort = {date_created : 1};
+    var mysort = {date_created : -1};
         try{
                 var jwtString = req.cookies.Authorization;
                 var profile = verifyJwt(jwtString);
@@ -414,7 +414,7 @@ router.put('/vote/:id', function(req, res, next){
                 	}
                			 if(comment[0].voted.indexOf(user_name) >= 0)
                			 {
-                		        res.send({status : "already voted"});
+                		        res.send({status : "Already Voted"});
                 		 }
                			 else
                			 {
