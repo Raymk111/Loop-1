@@ -1,6 +1,6 @@
 $(function(){
    	//make connection
-	var socket = io.connect('https://danu7.it.nuigalway.ie:8648')
+	var socket = io.connect('https://danu7.it.nuigalway.ie:8652')
 
 	//buttons and inputs
 	var message = $("#message")
@@ -22,7 +22,10 @@ $(function(){
 		feedback.html('');
 		message.val('');
 		chatroom.append("<p class='message'><b>" + data.username  + "</b>: " + data.message + "</p>");
-		onclick = notifyMe(data.username);
+		if(user_name != data.username)
+		{
+			onclick = notifyMe(data.username);
+		}
 	})
 
 	//Emit typing
