@@ -304,12 +304,16 @@ function resizeBase64Img(base64, width, height) {
 
 function voteUp(id){
         $.put("/vote/"+id, {
-        vote: 1 },  function (result) {alert(result.status)} );
+        vote: 1 },  function (result) {alert(result.status);
+	location.reload();
+} );
 
       }
 
 function voteDown(id){
         $.put("/vote/"+id, {
-        vote: -1 },  function (result) {alert(result.status)} );
+        vote: -1 },  function (result) {alert(result.status);
+	location.reload();
+} );
 
       }
